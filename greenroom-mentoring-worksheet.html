@@ -9,10 +9,10 @@
     --serif:'Gowun Batang','Nanum Myeongjo',serif;
   }
   *{box-sizing:border-box;}
-  .gr-root{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.65;font-size:15px;padding-bottom:60px;}
+  .gr-root{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.65;font-size:15px;padding-bottom:70px;}
 
-  .gr-bar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-    padding:11px 18px;background:var(--tank);color:#EAF3EF;border-bottom:2px solid var(--ink);}
+  .gr-bar{display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding:11px 18px;
+    background:var(--tank);color:#EAF3EF;border-bottom:2px solid var(--ink);}
   .gr-bar h1{font-family:var(--serif);font-size:17px;font-weight:700;margin:0;white-space:nowrap;}
   .gr-bar .sub{font-size:12px;color:var(--foam);margin-right:auto;white-space:nowrap;}
   .gr-btn{font-family:var(--sans);font-size:13px;font-weight:600;background:transparent;color:#EAF3EF;
@@ -27,41 +27,42 @@
   a.gr-btn.chat:hover{background:var(--foam);color:#04211B;}
   a.gr-btn.insta{border-color:#E4A0BC;color:#F3CBDA;}
   a.gr-btn.insta:hover{background:#E4A0BC;color:#3A1224;}
-  #saveState{font-size:12px;color:var(--foam);min-width:70px;text-align:right;}
+  #saveState{font-size:12px;color:var(--foam);min-width:68px;text-align:right;}
 
-  .stages{position:sticky;top:53px;z-index:55;display:flex;gap:0;background:var(--card);
-    border-bottom:1px solid var(--rule);padding:0 18px;overflow-x:auto;}
+  .meta{background:#E7EEE9;border-bottom:1px solid var(--rule);}
+  .meta-in{max-width:940px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .meta-in .mi{display:flex;align-items:center;gap:7px;font-size:13px;}
+  .meta-in .mi span{font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:600;white-space:nowrap;}
+  .meta-in .goal{flex:1;min-width:240px;}
+  .meta-in .field{min-height:auto;padding:5px 9px;font-size:13.5px;background:#fff;}
+
+  .tabs{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--rule);
+    box-shadow:0 1px 0 rgba(0,0,0,.03);}
+  .stages{display:flex;justify-content:center;gap:0;overflow-x:auto;}
   .stage-tab{flex:0 0 auto;background:transparent;border:0;border-bottom:3px solid transparent;
-    padding:13px 20px;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--muted);
-    white-space:nowrap;transition:.15s;}
+    padding:12px 26px;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--muted);
+    white-space:nowrap;transition:.15s;text-align:center;}
   .stage-tab:hover{color:var(--ink);}
   .stage-tab.on{color:var(--tank);border-bottom-color:var(--water);}
-  .stage-tab small{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:1px;}
+  .stage-tab small{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:2px;}
   .stage-tab.on small{color:var(--water);}
+  .stage-tab b{color:var(--water);}
 
-  .gr-wrap{display:grid;grid-template-columns:150px minmax(0,1fr);gap:26px;max-width:1020px;margin:0 auto;padding:24px 18px;}
-  .gr-rail{position:sticky;top:120px;align-self:start;}
-  .tank-label{font-size:11px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
-  .tank{position:relative;width:100%;height:200px;border:2px solid var(--tank);border-radius:3px;background:#fff;overflow:hidden;}
-  .tank .water{position:absolute;left:0;right:0;bottom:0;height:0%;background:linear-gradient(180deg,var(--water),var(--tank));transition:height .5s cubic-bezier(.4,0,.2,1);}
-  .tank .water::before{content:'';position:absolute;top:-5px;left:0;right:0;height:10px;background:var(--foam);opacity:.85;border-radius:50% 50% 0 0 / 100% 100% 0 0;}
-  .tank .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:24px;font-weight:700;mix-blend-mode:difference;color:#fff;}
-  .tank-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5;}
-  .tank-all{font-size:11px;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px solid var(--rule);}
-  .sub-nav{margin-top:16px;display:flex;flex-direction:column;gap:1px;}
-  .sub-nav button{background:transparent;border:0;border-left:2px solid transparent;text-align:left;
-    font-family:var(--sans);font-size:12.5px;color:var(--muted);padding:5px 0 5px 9px;cursor:pointer;}
-  .sub-nav button:hover{color:var(--ink);}
-  .sub-nav button.on{color:var(--tank);font-weight:700;border-left-color:var(--water);background:#E7EEE9;}
+  .subs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;padding:9px 18px;background:#E7EEE9;
+    border-top:1px solid var(--rule);}
+  .sub-tab{background:transparent;border:1px solid transparent;border-radius:100px;padding:5px 14px;
+    cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--muted);transition:.15s;}
+  .sub-tab:hover{color:var(--ink);border-color:var(--rule);}
+  .sub-tab.on{background:var(--tank);color:#fff;border-color:var(--tank);}
+  .sub-tab.star.on{background:var(--mark);border-color:var(--mark);}
 
-  .panel{display:none;}
-  .panel.on{display:block;}
-  .sheet{display:none;}
-  .sheet.on{display:block;}
+  main{max-width:940px;margin:0 auto;padding:26px 18px;}
+  .panel{display:none;} .panel.on{display:block;}
+  .sheet{display:none;} .sheet.on{display:block;}
+  section{margin-bottom:30px;}
 
-  section{margin-bottom:32px;}
   .eyebrow{font-size:11px;letter-spacing:.15em;color:var(--water);font-weight:700;margin-bottom:4px;}
-  h2{font-family:var(--serif);font-size:23px;font-weight:700;margin:0 0 4px;letter-spacing:-.02em;}
+  h2{font-family:var(--serif);font-size:24px;font-weight:700;margin:0 0 4px;letter-spacing:-.02em;}
   .lede{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
 
   .card{background:var(--card);border:1px solid var(--rule);border-radius:5px;padding:16px 18px;margin-bottom:10px;}
@@ -73,20 +74,33 @@
   .card strong{color:var(--tank);}
 
   .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);background:var(--card);
-    border:1px solid var(--rule);border-radius:5px;padding:10px 14px;margin-bottom:18px;}
+    border:1px solid var(--rule);border-radius:5px;padding:9px 14px;margin-bottom:16px;}
   .legend span{display:flex;align-items:center;gap:6px;}
   .legend i{width:13px;height:13px;border-radius:3px;display:inline-block;flex:0 0 13px;}
 
-  .define{background:var(--tank);color:#EAF3EF;border-radius:5px;padding:16px 18px;margin-top:14px;}
-  .define .dh{font-size:11px;letter-spacing:.14em;color:var(--foam);font-weight:700;margin-bottom:10px;}
-  .define .row{display:flex;gap:11px;align-items:flex-start;margin-bottom:13px;}
+  .bar{height:8px;background:#DCE5DE;border-radius:100px;overflow:hidden;margin:10px 0 6px;}
+  .bar div{height:100%;background:var(--water);width:0%;transition:width .5s cubic-bezier(.4,0,.2,1);}
+  .barnote{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;}
+
+  .define{background:var(--tank);color:#EAF3EF;border-radius:6px;padding:20px 22px;margin-bottom:14px;}
+  .define .dh{font-size:11px;letter-spacing:.14em;color:var(--foam);font-weight:700;margin-bottom:12px;}
+  .define .row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
   .define .row:last-child{margin-bottom:0;}
-  .define input[type=checkbox]{margin-top:5px;width:17px;height:17px;flex:0 0 17px;accent-color:var(--water);cursor:pointer;}
+  .define input[type=checkbox]{margin-top:5px;width:18px;height:18px;flex:0 0 18px;accent-color:var(--water);cursor:pointer;}
   .define .dq{flex:1;}
-  .define .dq b{font-family:var(--serif);font-size:16px;color:#fff;display:block;margin-bottom:6px;}
+  .define .dq b{font-family:var(--serif);font-size:17px;color:#fff;display:block;margin-bottom:7px;}
   .define .field{background:rgba(255,255,255,.09);border-color:rgba(234,243,239,.28);color:#fff;}
   .define .field:empty::before{color:rgba(234,243,239,.42);}
   .define .field:focus{background:rgba(255,255,255,.15);border-color:var(--foam);box-shadow:none;}
+  .define .bar{background:rgba(255,255,255,.15);}
+  .define .barnote{color:var(--foam);}
+
+  .path{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:6px;}
+  .path button{background:var(--card);border:1px solid var(--rule);border-radius:5px;padding:12px 14px;
+    text-align:left;cursor:pointer;font-family:var(--sans);transition:.15s;}
+  .path button:hover{border-color:var(--water);background:#F0F7F4;}
+  .path button b{display:block;font-size:13.5px;color:var(--ink);margin-bottom:2px;}
+  .path button small{font-size:11.5px;color:var(--muted);}
 
   .q{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px;}
   .qn{font-family:var(--serif);font-weight:700;font-size:14px;color:#fff;background:var(--tank);
@@ -106,7 +120,6 @@
   .field.line:focus{box-shadow:none;border-bottom-color:var(--water);}
 
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
   .lbl{font-size:11px;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-bottom:4px;display:block;}
 
   table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;}
@@ -133,8 +146,9 @@
   @media print{
     @page{margin:15mm 13mm;}
     .gr-root{background:#fff;font-size:10.5pt;padding:0;}
-    .gr-bar,.gr-rail,.stages,.addq,.no-print,.sub-nav{display:none !important;}
-    .gr-wrap{display:block;max-width:none;padding:0;}
+    .gr-bar,.tabs,.addq,.no-print{display:none !important;}
+    .meta{background:#fff;border-bottom:2px solid #333;}
+    main{max-width:none;padding:0;}
     .panel,.sheet{display:block !important;}
     section{page-break-inside:avoid;margin-bottom:16px;}
     .card{border-color:#bbb;padding:8px 10px;}
@@ -146,15 +160,16 @@
     .key .qn{background:#8a6a1f !important;}
     th{background:#eee !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .define,.closing{background:#fff !important;color:#000;border:2px solid #333;}
-    .define .dh,.define .dq b,.closing .eyebrow,.closing .quote{color:#000 !important;}
+    .define .dh,.define .dq b,.closing .eyebrow,.closing .quote,.define .barnote{color:#000 !important;}
     .define .field{background:#fff !important;color:#000;border-color:#999;}
+    .bar{display:none;}
+    .path{display:none;}
     svg{-webkit-print-color-adjust:exact;print-color-adjust:exact;max-width:100%;}
     h2{font-size:15pt;}
   }
-  @media (max-width:820px){
-    .gr-wrap{grid-template-columns:1fr;}
-    .gr-rail{display:none;}
-    .grid2,.grid3{grid-template-columns:1fr;}
+  @media (max-width:760px){
+    .grid2{grid-template-columns:1fr;}
+    .stage-tab{padding:10px 14px;}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
 </style>
@@ -172,61 +187,81 @@
     <button class="gr-btn danger" id="btnReset">지우기</button>
   </div>
 
-  <div class="stages" id="stages">
-    <button class="stage-tab on" data-stage="1">1단계 · 방향<small>오늘 · 2시간 · 정의 3개</small></button>
-    <button class="stage-tab" data-stage="2">2단계 · 증명<small>4주 뒤 · 정의 2개</small></button>
-    <button class="stage-tab" data-stage="3">3단계 · 실행<small>8~12주 · 정의 2개</small></button>
-    <button class="stage-tab" data-stage="4">부록<small>자료 · 협업</small></button>
+  <div class="meta">
+    <div class="meta-in">
+      <div class="mi"><span>일시</span><div class="field one" data-k="meta_date" data-ph="2026-07-14" style="min-width:110px"></div></div>
+      <div class="mi"><span>방식</span><div class="field one" data-k="meta_ch" data-ph="온라인" style="min-width:80px"></div></div>
+      <div class="mi"><span>참석</span><div class="field one" data-k="meta_who" data-ph="이예영 대표 / 멘토" style="min-width:130px"></div></div>
+      <div class="mi goal"><span>멘티가 말한 목표</span><div class="field one" data-k="meta_goal" data-ph="시작 5분 안에 물어보고 여기 적기" style="flex:1"></div></div>
+    </div>
   </div>
 
-  <div class="gr-wrap">
+  <div class="tabs">
+    <div class="stages">
+      <button class="stage-tab on" data-stage="1">1단계 · 방향<small>오늘 · 2시간 · <b id="c1">0/3</b></small></button>
+      <button class="stage-tab" data-stage="2">2단계 · 증명<small>4주 뒤 · <b id="c2">0/2</b></small></button>
+      <button class="stage-tab" data-stage="3">3단계 · 실행<small>8~12주 · <b id="c3">0/2</b></small></button>
+      <button class="stage-tab" data-stage="4">부록<small>자료 · 협업</small></button>
+    </div>
+    <div class="subs" id="subs"></div>
+  </div>
 
-    <aside class="gr-rail">
-      <div class="tank-label" id="tankLabel">1단계 진행</div>
-      <div class="tank"><div class="water" id="water"></div><div class="pct" id="pct">0/3</div></div>
-      <div class="tank-note" id="tankNote">오늘 이 3칸을 채우면 성공입니다.</div>
-      <div class="tank-all">전체 <b id="allPct">0/7</b> · 숙제 <b id="hwPct">0/4</b></div>
-      <nav class="sub-nav" id="subNav"></nav>
-    </aside>
+  <main>
 
-    <main>
-
-    <!-- ========== STAGE 1 ========== -->
     <div class="panel on" data-panel="1">
 
-      <div class="sheet on" data-sheet="1-1" data-title="세션 정보">
+      <div class="sheet on" data-sheet="1-1" data-title="★ 오늘 정의할 3가지" data-star="1">
         <section>
-          <div class="eyebrow">SESSION · 00:00 – 00:10</div>
-          <h2>세션 정보</h2>
+          <div class="eyebrow">오늘의 목적지</div>
+          <h2>오늘 정의하고 나갈 3가지</h2>
+          <p class="lede">2시간에 할 수 있는 건 이 3개뿐입니다. 7개를 다 채우려 하면 하나도 못 정합니다. <b>1번이 안 나오면 2·3번은 못 정합니다.</b></p>
+
+          <div class="define">
+            <div class="dh">오늘 정의하고 나갈 것</div>
+            <div class="row">
+              <input type="checkbox" data-c="d1" aria-label="정의 1">
+              <div class="dq"><b>1. 정체성 — 종자를 “생산”하는가, 품종을 “육종”하는가</b>
+                <div class="field one" data-k="def1" data-ph="그린룸은 ______하는 회사다 (한 문장)"></div></div>
+            </div>
+            <div class="row">
+              <input type="checkbox" data-c="d2" aria-label="정의 2">
+              <div class="dq"><b>2. 트랙 — 투자 받아 엑싯인가, 돈 벌기인가</b>
+                <div class="field one" data-k="def2" data-ph="둘 다는 없습니다. 하나만."></div></div>
+            </div>
+            <div class="row">
+              <input type="checkbox" data-c="d3" aria-label="정의 3">
+              <div class="dq"><b>3. 향할 곳 — 1순위 고객 &amp; 3년 뒤 인수 후보</b>
+                <div class="field one" data-k="def3" data-ph="고객: 어민 / 대기업 / 육상양식 스타트업 · 인수 후보: 회사 이름을 쓸 것"></div></div>
+            </div>
+            <div class="bar"><div id="bar1"></div></div>
+            <div class="barnote"><span>오늘 이 3칸을 채우면 성공입니다</span><span id="bn1">0/3</span></div>
+          </div>
+
+          <div class="card ask">
+            <p><strong>“둘 다 하고 싶다”고 답하실 겁니다.</strong> 대부분 그렇습니다. 그때 물러서지 말고 이렇게 되물으세요.</p>
+            <p style="font-family:var(--serif);font-size:16px;margin-bottom:0">“1년 뒤 딱 하나만 자랑할 수 있다면 — <b>‘대기업 공급계약 따냈습니다’</b>인가요, <b>‘월 매출 3천 나옵니다’</b>인가요?”</p>
+          </div>
+
+          <div class="card">
+            <span class="lbl">이 3가지를 정하려면 — 이 순서로 갑니다</span>
+            <div class="path">
+              <button data-go="1-2"><b>1. 시장 · 산업 구조</b><small>20분 · 밸류체인에서 그린룸의 자리</small></button>
+              <button data-go="1-3"><b>2. 생산 vs 육종</b><small>20분 · 인쇄소인가 저자인가</small></button>
+              <button data-go="1-4"><b>3. 계정 진단</b><small>10분 · 먼저 잘한다고 인정해주기</small></button>
+              <button data-go="1-5"><b>4. 진단 질문</b><small>40분 · 듣는 시간</small></button>
+              <button data-go="1-6"><b>5. 숙제 내주기</b><small>10분 · 오늘의 진짜 산출물</small></button>
+            </div>
+          </div>
+
           <div class="legend">
             <span><i style="background:#E7EEE9;border:1px solid #C6D5CB"></i> 초록 = 확인된 팩트</span>
             <span><i style="background:#F6EFE0;border:1px solid #E0CFA6"></i> 노랑 = 물어볼 것</span>
             <span><i style="background:#FCEBEB;border:1px solid #F09595"></i> 빨강 = 위험 신호</span>
             <span><i style="background:#14453B"></i> 남색 = 정의하고 나갈 것</span>
           </div>
-          <div class="card">
-            <div class="grid3">
-              <div><span class="lbl">일시</span><div class="field one line" data-k="meta_date" data-ph="2026-07-14"></div></div>
-              <div><span class="lbl">방식</span><div class="field one line" data-k="meta_ch" data-ph="온라인"></div></div>
-              <div><span class="lbl">참석</span><div class="field one line" data-k="meta_who" data-ph="이예영 대표 / 멘토"></div></div>
-            </div>
-            <div style="margin-top:12px">
-              <span class="lbl">멘티가 직접 말한 오늘의 목표</span>
-              <div class="field" data-k="meta_goal" data-ph="시작 5분 안에 물어보고 여기 적기"></div>
-            </div>
-          </div>
-          <div class="card fact">
-            <p><strong>오늘 2시간에 할 수 있는 것은 3개뿐입니다.</strong> 7개를 다 채우려 하면 하나도 못 정합니다.</p>
-            <p style="margin-bottom:0">
-              <b>오늘 (1단계 · 방향)</b> — 정체성 / 트랙 / 향할 곳<br>
-              <b>4주 뒤 (2단계 · 증명)</b> — 기술 자산 / 고객 검증 ← <b>숙제를 해와야 가능</b><br>
-              <b>8~12주 (3단계 · 실행)</b> — 마케팅 목적 / 90일 액션 · IR
-            </p>
-          </div>
         </section>
       </div>
-
-      <div class="sheet" data-sheet="1-2" data-title="시장 · 산업 구조 ★">
+<div class="sheet" data-sheet="1-2" data-title="1. 시장 · 산업 구조">
         <section>
           <div class="eyebrow">00:10 – 00:30 · 오늘의 핵심</div>
           <h2>산업 구조 — 그린룸은 어디에 서 있는가</h2>
@@ -289,7 +324,7 @@
         </section>
       </div>
 
-      <div class="sheet" data-sheet="1-3" data-title="생산 vs 육종 ★">
+      <div class="sheet" data-sheet="1-3" data-title="2. 생산 vs 육종">
         <section>
           <div class="eyebrow">00:30 – 00:50 · 오늘 가장 중요한 구분</div>
           <h2>생산 vs 육종 — 그리고 경쟁 지형</h2>
@@ -385,7 +420,7 @@
         </section>
       </div>
 
-      <div class="sheet" data-sheet="1-4" data-title="계정 진단">
+      <div class="sheet" data-sheet="1-4" data-title="3. 계정 진단">
         <section>
           <div class="eyebrow">사전 조사</div>
           <h2>계정 진단 — @greenroom.gim</h2>
@@ -412,12 +447,11 @@
         </section>
       </div>
 
-      <div class="sheet" data-sheet="1-5" data-title="진단 질문">
+            <div class="sheet" data-sheet="1-5" data-title="4. 진단 질문">
         <section>
           <div class="eyebrow">00:50 – 01:30 · 듣는 시간</div>
           <h2>진단 질문</h2>
           <p class="lede">조언보다 질문이 먼저입니다. 말이 막히는 지점이 곧 진짜 과제입니다. ★는 오늘 반드시 답을 받아야 하는 질문.</p>
-
           <div class="card">
             <div class="eyebrow" style="color:var(--muted)">A · 정체성</div>
             <div id="grpA"></div>
@@ -436,44 +470,11 @@
         </section>
       </div>
 
-      <div class="sheet" data-sheet="1-6" data-title="★ 오늘 정의할 3가지">
-        <section>
-          <div class="eyebrow">01:30 – 01:50</div>
-          <h2>오늘 정의하고 나갈 3가지</h2>
-          <p class="lede">이 3칸을 채우면 오늘은 성공입니다. <b>1번이 안 나오면 2·3번은 못 정합니다.</b> 억지로 넘어가지 마세요.</p>
-
-          <div class="card ask">
-            <p><strong>“둘 다 하고 싶다”고 답하실 겁니다.</strong> 대부분 그렇습니다. 그때 물러서지 말고 이렇게 되물으세요.</p>
-            <p style="font-family:var(--serif);font-size:16px;margin-bottom:0">“1년 뒤 딱 하나만 자랑할 수 있다면 — <b>‘대기업 공급계약 따냈습니다’</b>인가요, <b>‘월 매출 3천 나옵니다’</b>인가요?”</p>
-          </div>
-
-          <div class="define">
-            <div class="dh">오늘 정의하고 나갈 것</div>
-            <div class="row">
-              <input type="checkbox" data-c="d1" aria-label="정의 1">
-              <div class="dq"><b>1. 정체성 — 생산인가 육종인가</b>
-                <div class="field one" data-k="def1" data-ph="그린룸은 ______하는 회사다 (한 문장)"></div></div>
-            </div>
-            <div class="row">
-              <input type="checkbox" data-c="d2" aria-label="정의 2">
-              <div class="dq"><b>2. 트랙 — 투자·엑싯인가, 돈 벌기인가</b>
-                <div class="field one" data-k="def2" data-ph="둘 다는 없습니다. 하나만."></div></div>
-            </div>
-            <div class="row">
-              <input type="checkbox" data-c="d3" aria-label="정의 3">
-              <div class="dq"><b>3. 향할 곳 — 1순위 고객 &amp; 3년 뒤 인수 후보</b>
-                <div class="field one" data-k="def3" data-ph="고객: 어민 / 대기업 / 육상양식 스타트업 · 인수 후보: 회사 이름을 쓸 것"></div></div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <div class="sheet" data-sheet="1-7" data-title="숙제 내주기">
+      <div class="sheet" data-sheet="1-6" data-title="5. 숙제 내주기">
         <section>
           <div class="eyebrow">01:50 – 02:00</div>
           <h2>숙제 — 2단계를 위해 해와야 할 것</h2>
-          <p class="lede">2단계(증명)는 이 4가지가 없으면 시작할 수 없습니다. <b>세션 마지막 10분에 이것만 확실히 전달하세요.</b></p>
-
+          <p class="lede">2단계(증명)는 이 4가지가 없으면 시작할 수 없습니다. <b>마지막 10분에 이것만 확실히 전달하세요.</b></p>
           <div class="card">
             <div class="hw"><input type="checkbox" data-c="h1"><div>
               <b>1. 기술 현황 A4 한 장</b>
@@ -481,7 +482,7 @@
             </div></div>
             <div class="hw"><input type="checkbox" data-c="h2"><div>
               <b>2. 육상양식 스타트업 3곳 접촉</b>
-              <small>두번째바다 · 스마트씨코리아 · 지평선육상김. 전부 종자를 사다 써야 하는 회사입니다. 만나서 “종자 필요하냐” 물어볼 것.</small>
+              <small>두번째바다 · 스마트씨코리아 · 지평선육상김. 전부 종자를 사다 써야 하는 회사입니다. “종자 필요하냐” 물어볼 것.</small>
             </div></div>
             <div class="hw"><input type="checkbox" data-c="h3"><div>
               <b>3. 경기도 수산자원연구소 · 수과원과의 관계 확인</b>
@@ -489,30 +490,58 @@
             </div></div>
             <div class="hw"><input type="checkbox" data-c="h4"><div>
               <b>4. 지분 구조 · 런웨이 · 자금 계획</b>
-              <small>배양장 투자금 출처, 돈이 언제 떨어지는지, 다음 라운드 목표. 투자 트랙이면 이게 전략의 속도를 결정합니다.</small>
+              <small>배양장 투자금 출처, 돈이 언제 떨어지는지, 다음 라운드 목표.</small>
             </div></div>
             <div style="margin-top:6px">
               <span class="lbl">숙제 마감 / 다음 세션 일정</span>
               <div class="field one line" data-k="hw_due" data-ph="4주 뒤 · 2026-08-11 · 온라인 60분"></div>
             </div>
           </div>
-
           <section class="closing">
             <div class="eyebrow">세션을 닫기 전에</div>
-            <p class="quote" style="font-size:15px">좌측 게이지가 <b>3/3</b>인지 확인하세요. 비어 있다면 그건 오늘 대표님이 답하지 못한 것이고, 그 자체가 결론입니다.</p>
+            <p class="quote" style="font-size:15px">‘오늘 정의할 3가지’ 탭으로 돌아가 <b>3/3</b>인지 확인하세요. 비어 있다면 그건 오늘 대표님이 답하지 못한 것이고, 그 자체가 결론입니다.</p>
             <p class="quote">“콘텐츠는 이미 잘하고 계십니다.<br>오늘 정할 건 하나예요 — <b>대표님은 인쇄소입니까, 저자입니까.</b><br>저자라면, 저작권은 언제 등록하실 겁니까.”</p>
           </section>
         </section>
       </div>
     </div>
 
-    <!-- ========== STAGE 2 ========== -->
     <div class="panel" data-panel="2">
-      <div class="sheet on" data-sheet="2-1" data-title="숙제 점검">
+      <div class="sheet on" data-sheet="2-1" data-title="★ 2단계 정의 2가지" data-star="1">
         <section>
-          <div class="eyebrow">2단계 · 4주 뒤</div>
+          <div class="eyebrow">2단계 · 4주 뒤 · 목적지</div>
+          <h2>2단계에서 정의할 2가지</h2>
+          <p class="lede">숙제 4개가 안 오면 이 세션은 열지 마세요. 기술 현황도 모르는데 출원 계획을 세우면 그건 상상입니다.</p>
+          <div class="define">
+            <div class="dh">정의하고 나갈 것</div>
+            <div class="row">
+              <input type="checkbox" data-c="d4" aria-label="정의 4">
+              <div class="dq"><b>4. 기술 자산 — 품종보호권을 언제, 무엇으로 출원하는가</b>
+                <div class="field one" data-k="def4" data-ph="출원 시점 / 대상 형질 / 부족한 데이터와 확보 방법"></div></div>
+            </div>
+            <div class="row">
+              <input type="checkbox" data-c="d5" aria-label="정의 5">
+              <div class="dq"><b>5. 고객 검증 — 실제로 사겠다는 사람이 나왔는가</b>
+                <div class="field one" data-k="def5" data-ph="스타트업 3곳 반응 / 어민 파일럿 / LOI 가능성"></div></div>
+            </div>
+            <div class="bar"><div id="bar2"></div></div>
+            <div class="barnote"><span>숙제를 해와야 시작할 수 있습니다</span><span id="bn2">0/2</span></div>
+          </div>
+          <div class="card">
+            <span class="lbl">이 2가지를 정하려면</span>
+            <div class="path">
+              <button data-go="2-2"><b>1. 숙제 점검</b><small>안 해왔으면 진도 나가지 말 것</small></button>
+              <button data-go="2-3"><b>2. 기술 자산 진단</b><small>발굴 중인가, 발굴했는가</small></button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="2-2" data-title="1. 숙제 점검">
+        <section>
+          <div class="eyebrow">2단계</div>
           <h2>숙제 점검</h2>
-          <p class="lede">숙제를 안 해왔다면 세션을 진행하지 마세요. 진도를 나가는 척하는 게 가장 나쁩니다.</p>
+          <p class="lede">진도를 나가는 척하는 게 가장 나쁩니다. 안 해왔으면 미루세요.</p>
           <div class="card">
             <div class="grid2">
               <div><span class="lbl">1. 기술 현황 A4 — 받았나?</span><div class="field big" data-k="s2_h1" data-ph=""></div></div>
@@ -526,12 +555,12 @@
         </section>
       </div>
 
-      <div class="sheet" data-sheet="2-2" data-title="기술 자산 진단">
+      <div class="sheet" data-sheet="2-3" data-title="2. 기술 자산 진단">
         <section>
           <div class="eyebrow">2단계</div>
           <h2>기술 자산 — 무엇을 갖고 있는가</h2>
           <div class="card ask">
-            <p style="margin-bottom:0"><strong>핵심 질문.</strong> 인스타에는 “고수온에서도 자라는 종자를 <b>발굴</b>”이라고 쓰셨습니다. <b>“발굴 중”인지 “발굴했는지”가 회사 가치의 전부입니다.</b></p>
+            <p style="margin-bottom:0"><strong>핵심.</strong> 인스타에는 “고수온에서도 자라는 종자를 <b>발굴</b>”이라고 쓰셨습니다. <b>“발굴 중”인지 “발굴했는지”가 회사 가치의 전부입니다.</b></p>
           </div>
           <div class="card">
             <table>
@@ -547,38 +576,46 @@
           </div>
         </section>
       </div>
+    </div>
 
-      <div class="sheet" data-sheet="2-3" data-title="★ 2단계 정의 2가지">
+    <div class="panel" data-panel="3">
+      <div class="sheet on" data-sheet="3-1" data-title="★ 3단계 정의 2가지" data-star="1">
         <section>
-          <div class="eyebrow">2단계 결론</div>
-          <h2>2단계에서 정의할 2가지</h2>
+          <div class="eyebrow">3단계 · 8~12주 · 목적지</div>
+          <h2>3단계에서 정의할 2가지</h2>
+          <p class="lede">1·2단계가 끝나야 여기가 나옵니다. 콘텐츠 만드는 법이 아니라 <b>무엇을 위해 만드는가</b>의 문제입니다.</p>
           <div class="define">
             <div class="dh">정의하고 나갈 것</div>
             <div class="row">
-              <input type="checkbox" data-c="d4" aria-label="정의 4">
-              <div class="dq"><b>4. 기술 자산 — 품종보호권을 언제, 무엇으로 출원하는가</b>
-                <div class="field one" data-k="def4" data-ph="출원 시점 / 대상 형질 / 부족한 데이터와 확보 방법"></div></div>
+              <input type="checkbox" data-c="d6" aria-label="정의 6">
+              <div class="dq"><b>6. 마케팅의 목적 — 무엇을 위해 콘텐츠를 만드는가</b>
+                <div class="field one" data-k="def6" data-ph="소비자 판매 / 어민·기업 영업 / 투자자·인수자에게 보이기 / 언론·정책"></div></div>
             </div>
             <div class="row">
-              <input type="checkbox" data-c="d5" aria-label="정의 5">
-              <div class="dq"><b>5. 고객 검증 — 실제로 사겠다는 사람이 나왔는가</b>
-                <div class="field one" data-k="def5" data-ph="스타트업 3곳 반응 / 어민 파일럿 / LOI 가능성"></div></div>
+              <input type="checkbox" data-c="d7" aria-label="정의 7">
+              <div class="dq"><b>7. 90일 액션 + 시드 준비</b>
+                <div class="field one" data-k="def7" data-ph="대표님이 직접 하겠다고 말한 것만"></div></div>
+            </div>
+            <div class="bar"><div id="bar3"></div></div>
+            <div class="barnote"><span>1·2단계가 끝나야 나옵니다</span><span id="bn3">0/2</span></div>
+          </div>
+          <div class="card">
+            <span class="lbl">이 2가지를 정하려면</span>
+            <div class="path">
+              <button data-go="3-2"><b>1. 마케팅 · 콘텐츠</b><small>목적이 정해져야 KPI가 나온다</small></button>
+              <button data-go="3-3"><b>2. 성장 사다리 · IR</b><small>1년 / 3년 / 5년 / 엑싯</small></button>
             </div>
           </div>
         </section>
       </div>
-    </div>
 
-    <!-- ========== STAGE 3 ========== -->
-    <div class="panel" data-panel="3">
-      <div class="sheet on" data-sheet="3-1" data-title="마케팅 · 콘텐츠">
+      <div class="sheet" data-sheet="3-2" data-title="1. 마케팅 · 콘텐츠">
         <section>
-          <div class="eyebrow">3단계 · 8~12주</div>
+          <div class="eyebrow">3단계</div>
           <h2>마케팅의 목적을 다시 정한다</h2>
-          <p class="lede">1·2단계가 끝나야 여기가 나옵니다. 콘텐츠 만드는 법이 아니라 <b>무엇을 위해 만드는가</b>의 문제입니다.</p>
           <div class="card fact">
             <p><strong>투자 트랙이라면.</strong> 인스타 2,000명은 물건 파는 채널이 아니라 <b>투자자·잠재 인수자가 들여다보는 창</b>입니다. 김 카테고리에 이런 크리에이터 브랜드는 없습니다. IR에서 “종자 기술 + 국내 유일 김 브랜드”로 쓸 수 있는 자산입니다.</p>
-            <p style="margin-bottom:0"><strong>캐시카우 트랙이라면.</strong> 김 키우기 키트 · 교육 · 체험이 1번 제품입니다. 댓글로 수요가 이미 증명됐습니다.</p>
+            <p style="margin-bottom:0"><strong>캐시카우 트랙이라면.</strong> 김 키우기 키트 · 교육 · 체험이 1번 제품입니다. “어떻게 해먹나요” 댓글로 수요가 이미 증명됐습니다.</p>
           </div>
           <div class="card">
             <table>
@@ -593,12 +630,11 @@
         </section>
       </div>
 
-      <div class="sheet" data-sheet="3-2" data-title="90일 액션 · IR">
+      <div class="sheet" data-sheet="3-3" data-title="2. 성장 사다리 · IR">
         <section>
           <div class="eyebrow">3단계</div>
-          <h2>90일 액션 · IR 준비</h2>
+          <h2>성장 사다리 · IR 준비</h2>
           <div class="card">
-            <span class="lbl">성장 사다리</span>
             <table>
               <thead><tr><th style="width:70px">단계</th><th style="width:270px">목표</th><th>현재 위치</th></tr></thead>
               <tbody>
@@ -614,29 +650,8 @@
           </div>
         </section>
       </div>
-
-      <div class="sheet" data-sheet="3-3" data-title="★ 3단계 정의 2가지">
-        <section>
-          <div class="eyebrow">3단계 결론</div>
-          <h2>3단계에서 정의할 2가지</h2>
-          <div class="define">
-            <div class="dh">정의하고 나갈 것</div>
-            <div class="row">
-              <input type="checkbox" data-c="d6" aria-label="정의 6">
-              <div class="dq"><b>6. 마케팅의 목적 — 무엇을 위해 콘텐츠를 만드는가</b>
-                <div class="field one" data-k="def6" data-ph="소비자 판매 / 어민·기업 영업 / 투자자·인수자에게 보이기 / 언론·정책 — 목적이 정해져야 KPI가 나옵니다"></div></div>
-            </div>
-            <div class="row">
-              <input type="checkbox" data-c="d7" aria-label="정의 7">
-              <div class="dq"><b>7. 90일 액션 + 시드 준비</b>
-                <div class="field one" data-k="def7" data-ph="대표님이 직접 하겠다고 말한 것만"></div></div>
-            </div>
-          </div>
-        </section>
-      </div>
     </div>
 
-    <!-- ========== STAGE 4 ========== -->
     <div class="panel" data-panel="4">
       <div class="sheet on" data-sheet="4-1" data-title="협업 · 후속">
         <section>
@@ -657,7 +672,7 @@
         </section>
       </div>
 
-      <div class="sheet" data-sheet="4-2" data-title="출처">
+      <div class="sheet" data-sheet="4-2" data-title="자료 출처">
         <section>
           <div class="eyebrow">부록</div>
           <h2>자료 출처</h2>
@@ -674,13 +689,12 @@
       </div>
     </div>
 
-    </main>
-  </div>
+  </main>
 </div>
 
 <script>
 (function(){
-  const KEY='greenroom-mentoring-v2';
+  const KEY='greenroom-mentoring-v3';
   const state={checks:{}};
   const extras={A:[],B:[],C:[]};
 
@@ -743,48 +757,48 @@
     });
   });
 
-  let curStage='1';
-  const STAGE_DEF={'1':['d1','d2','d3'],'2':['d4','d5'],'3':['d6','d7'],'4':[]};
-  const STAGE_NOTE={'1':'오늘 이 3칸을 채우면 성공입니다.','2':'숙제를 해와야 시작할 수 있습니다.','3':'1·2단계가 끝나야 나옵니다.','4':'참고 자료입니다.'};
-
-  function buildSubNav(){
-    const nav=document.getElementById('subNav'); nav.innerHTML='';
-    document.querySelectorAll('.panel[data-panel="'+curStage+'"] .sheet').forEach(sh=>{
+  let cur='1';
+  function showSheet(id){
+    const panel=document.querySelector('.panel[data-panel="'+cur+'"]');
+    panel.querySelectorAll('.sheet').forEach(s=>s.classList.toggle('on',s.dataset.sheet===id));
+    buildSubs(); window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function buildSubs(){
+    const box=document.getElementById('subs'); box.innerHTML='';
+    document.querySelectorAll('.panel[data-panel="'+cur+'"] .sheet').forEach(sh=>{
       const b=document.createElement('button');
+      b.className='sub-tab'+(sh.dataset.star?' star':'')+(sh.classList.contains('on')?' on':'');
       b.textContent=sh.dataset.title;
-      b.className=sh.classList.contains('on')?'on':'';
-      b.onclick=()=>{
-        document.querySelectorAll('.panel[data-panel="'+curStage+'"] .sheet').forEach(s=>s.classList.remove('on'));
-        sh.classList.add('on'); buildSubNav(); window.scrollTo({top:0,behavior:'smooth'});
-      };
-      nav.appendChild(b);
+      b.onclick=()=>showSheet(sh.dataset.sheet);
+      box.appendChild(b);
     });
   }
   document.querySelectorAll('.stage-tab').forEach(t=>{
     t.addEventListener('click',()=>{
-      curStage=t.dataset.stage;
+      cur=t.dataset.stage;
       document.querySelectorAll('.stage-tab').forEach(x=>x.classList.remove('on'));
       t.classList.add('on');
-      document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.dataset.panel===curStage));
-      const sheets=document.querySelectorAll('.panel[data-panel="'+curStage+'"] .sheet');
+      document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.dataset.panel===cur));
+      const sheets=document.querySelectorAll('.panel[data-panel="'+cur+'"] .sheet');
       sheets.forEach((s,i)=>s.classList.toggle('on',i===0));
-      buildSubNav(); tick(); window.scrollTo({top:0,behavior:'smooth'});
+      buildSubs(); window.scrollTo({top:0,behavior:'smooth'});
     });
   });
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-go]'); if(!b) return;
+    showSheet(b.dataset.go);
+  });
 
+  const GROUPS={'1':['d1','d2','d3'],'2':['d4','d5'],'3':['d6','d7']};
   function tick(){
-    const list=STAGE_DEF[curStage];
-    const done=list.filter(k=>state.checks[k]).length;
-    const total=list.length;
-    const p=total?Math.round(done/total*100):0;
-    document.getElementById('water').style.height=p+'%';
-    document.getElementById('pct').textContent=total?done+'/'+total:'—';
-    document.getElementById('tankLabel').textContent=curStage+'단계 진행';
-    document.getElementById('tankNote').textContent=STAGE_NOTE[curStage];
-    const all=['d1','d2','d3','d4','d5','d6','d7'].filter(k=>state.checks[k]).length;
-    document.getElementById('allPct').textContent=all+'/7';
-    const hw=['h1','h2','h3','h4'].filter(k=>state.checks[k]).length;
-    document.getElementById('hwPct').textContent=hw+'/4';
+    ['1','2','3'].forEach(s=>{
+      const list=GROUPS[s];
+      const done=list.filter(k=>state.checks[k]).length;
+      const p=Math.round(done/list.length*100);
+      const bar=document.getElementById('bar'+s); if(bar) bar.style.width=p+'%';
+      const bn=document.getElementById('bn'+s); if(bn) bn.textContent=done+'/'+list.length;
+      const c=document.getElementById('c'+s); if(c) c.textContent=done+'/'+list.length;
+    });
   }
 
   function syncChat(){
@@ -816,7 +830,7 @@
       }
       badge.textContent='저장됨 ✓';
     }catch(e){ badge.textContent='새 기록'; state.checks=state.checks||{}; }
-    bindAll(); buildSubNav(); tick(); syncChat();
+    bindAll(); buildSubs(); tick(); syncChat();
   }
 
   document.getElementById('btnExport').addEventListener('click',()=>{
@@ -826,14 +840,14 @@
     o+='- 일시: '+g('meta_date')+' / '+g('meta_ch')+' / '+g('meta_who')+'\n';
     o+='- 멘티가 말한 목표: '+g('meta_goal')+'\n\n';
     o+='## 결론 — 정의한 것\n';
-    o+='### 1단계 (방향)\n';
+    o+='### 1단계 · 방향 (오늘)\n';
     o+=ck('d1')+' 1. 정체성 (생산/육종): '+g('def1')+'\n';
     o+=ck('d2')+' 2. 트랙 (투자/돈벌기): '+g('def2')+'\n';
     o+=ck('d3')+' 3. 향할 곳 (고객·인수후보): '+g('def3')+'\n';
-    o+='### 2단계 (증명)\n';
+    o+='### 2단계 · 증명 (4주 뒤)\n';
     o+=ck('d4')+' 4. 품종보호권 출원: '+g('def4')+'\n';
     o+=ck('d5')+' 5. 고객 검증: '+g('def5')+'\n';
-    o+='### 3단계 (실행)\n';
+    o+='### 3단계 · 실행 (8~12주)\n';
     o+=ck('d6')+' 6. 마케팅의 목적: '+g('def6')+'\n';
     o+=ck('d7')+' 7. 90일 액션·시드: '+g('def7')+'\n\n';
     o+='## 숙제 (다음 세션 전까지)\n';
