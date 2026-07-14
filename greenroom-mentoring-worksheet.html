@@ -204,7 +204,7 @@
     <h1>그린룸 · 멘토링 기록지</h1>
     <span class="sub">이예영 대표 / 김 스마트팜 / 브랜딩·마케팅</span>
     <span id="saveState">불러오는 중</span>
-    <a class="gr-btn chat" id="btnChat" href="https://claude.ai/recents" target="_blank" rel="noopener">💬 Claude 채팅 열기</a>
+    <a class="gr-btn chat" id="btnChat" href="https://claude.ai/chat/915961da-7165-430e-bfa3-5b246b8703e3" target="_blank" rel="noopener">💬 Claude 채팅 열기</a>
     <button class="gr-btn solid" onclick="window.print()">인쇄 / PDF 저장</button>
     <button class="gr-btn" id="btnExport">텍스트로 내려받기</button>
     <button class="gr-btn danger" id="btnReset">전체 지우기</button>
@@ -227,6 +227,7 @@
         <a href="#s1b">계정 진단</a>
         <a href="#s1c">어떤 회사인가</a>
         <a href="#s2">진단 질문</a>
+        <a href="#s2b">포트폴리오 ★</a>
         <a href="#s3">포지셔닝</a>
         <a href="#s4">수익 3축</a>
         <a href="#s5">교육 설계</a>
@@ -253,8 +254,8 @@
             <div class="field" data-k="meta_goal" data-ph="세션 시작 5분 안에 물어보고 여기 적기"></div>
           </div>
           <div style="margin-top:12px" class="no-print">
-            <span class="lbl">Claude 채팅 링크 — 한 번 붙여넣으면 상단 ‘Claude 채팅 열기’ 버튼이 이 주소로 연결됩니다</span>
-            <div class="field one line" data-k="chat_url" data-ph="이 대화의 주소를 복사해 붙여넣기 (비워두면 최근 대화 목록으로 이동)"></div>
+            <span class="lbl">Claude 채팅 링크 — 이미 이 대화로 연결되어 있습니다. 다른 대화로 바꾸려면 여기에 주소를 넣으세요</span>
+            <div class="field one line" data-k="chat_url" data-ph="기본값: 이 멘토링 준비 대화"></div>
           </div>
         </div>
       </section>
@@ -481,6 +482,80 @@
           <div class="eyebrow" style="color:var(--muted)">D · 브랜드</div>
           <div id="grpD"></div>
           <button class="addq" data-grp="D">+ 이 그룹에 질문 추가</button>
+        </div>
+      </section>
+
+      <!-- 2b -->
+      <section id="s2b">
+        <div class="eyebrow">01:10 – 01:35 · 실행의 핵심</div>
+        <h2>1년 안에 무엇을 남길 것인가 — 포트폴리오 설계</h2>
+        <p class="lede">투자도 M&amp;A도 결국 하나를 봅니다. <b>“이 회사가 진짜 실력이 있는가.”</b> 그 답은 포트폴리오로만 증명됩니다.</p>
+
+        <div class="card brief" style="background:#FBEBE6;border-color:#E8B6A4">
+          <p style="font-family:var(--serif);font-size:16px;margin-bottom:8px"><strong>⚠ 먼저 — 인스타 공개가 특허를 죽일 수 있습니다</strong></p>
+          <p>계정에 이미 올라가 있는 것: “김 종자 키우기 1단계”(패각 사상체 배양 과정), 현미경 뷰, 배양 조건, 실패 사례, “그린룸이 생산한 김 종자 패각사상체”.</p>
+          <p><b>특허는 출원 전에 공개되면 신규성을 잃습니다.</b> 한국은 공지예외주장(12개월)으로 구제 여지가 있지만, <b>해외 출원(PCT)에서는 나라에 따라 그대로 거절 사유입니다.</b> 종자를 해외에 팔겠다는 회사에겐 치명적입니다.</p>
+          <p><b>지금 대표님은 가장 중요한 자산을 릴스로 무료 공개하고 계실 수 있습니다.</b> 본인은 모를 가능성이 큽니다.</p>
+          <p style="margin-bottom:0"><b>물어볼 것:</b> “지금까지 올린 배양 영상 중에 특허로 낼 만한 방법이 들어간 게 있습니까? 변리사와 상의해보셨나요?”</p>
+        </div>
+        <div class="card">
+          <span class="lbl">대표님 답변 / 변리사 상담 여부 / 앞으로 공개 수위</span>
+          <div class="field big" data-k="ip_warn" data-ph=""></div>
+        </div>
+
+        <div class="card">
+          <span class="lbl">포트폴리오 4층 — 각 층에 1년 안에 무엇을 채울 것인가</span>
+          <table>
+            <thead><tr><th style="width:130px">층</th><th style="width:250px">무엇을 쌓는가</th><th>1년 목표 (함께 확정)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><b>① IP</b><br><small style="color:var(--muted)">특허 · 품종권</small></td>
+                <td>고수온 내성 <b>계통</b> 자체 / <b>배양 공정</b>(배지·조건) / <b>배양 장치</b> / 수산식물 <b>품종보호권</b><br><small style="color:var(--muted)">등록은 나중이어도 “출원 완료”만으로 IR에서 통합니다</small></td>
+                <td><div class="field" data-k="pf_ip" data-ph="출원 2~3건 목표. 무엇을 먼저?"></div></td>
+              </tr>
+              <tr>
+                <td><b>② 유전자원</b><br><small style="color:var(--muted)">종자 뱅크 ★</small></td>
+                <td>전국 연안 + 해외 <b>자연김 계통 수집·보존</b><br><small style="color:var(--muted)">“OO개 계통 보유” — 이 숫자 자체가 자산. 돈보다 <b>시간</b>이 드는 일이라 대기업이 가장 따라오기 어렵습니다. 하루 늦으면 하루 손해.</small></td>
+                <td><div class="field" data-k="pf_gene" data-ph="현재 몇 계통? 1년 뒤 목표 몇 계통?"></div></td>
+              </tr>
+              <tr>
+                <td><b>③ 데이터</b><br><small style="color:var(--muted)">대기업이 원하는 것</small></td>
+                <td>계통별 <b>온도·염도·광량 구간별 생장 데이터</b><br><small style="color:var(--muted)">육상양식 수조 조건 최적화에 반드시 필요. CJ·풀무원이 돈 주고 사고 싶어 하는 게 정확히 이것.</small></td>
+                <td><div class="field" data-k="pf_data" data-ph="배양장에서 어떤 데이터를 어떻게 기록할 것인가"></div></td>
+              </tr>
+              <tr>
+                <td><b>④ 증거</b><br><small style="color:var(--muted)">제3자 검증</small></td>
+                <td><b>어민 파일럿</b>(태안 김장수님) — 실제 바다에 그린룸 종자를 넣고 결과 측정<br><b>제3자 검증</b> — 국립수산과학원 / 지자체 수산자원연구소 / 대학 공동연구<br><b>논문·학회 발표 1편</b> — 기술 신뢰도의 가장 싼 증명</td>
+                <td><div class="field" data-k="pf_evid" data-ph="레퍼런스 1건이 IR 슬라이드 열 장보다 셉니다"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="grid2">
+            <div>
+              <span class="lbl">인스타를 포트폴리오로 바꾸는 법</span>
+              <div class="card brief" style="margin:0;font-size:13.5px">
+                <p>지금 계정은 <b>“일기”</b>입니다. 재밌고 사람은 모이는데 <b>증거가 아닙니다.</b></p>
+                <p>· 하이라이트를 IR 구조로 재편<br>&nbsp;&nbsp;[김이란] [우리 기술] [계통 라이브러리] [실증] [수상·인증] [팀]</p>
+                <p>· 릴스에 <b>날짜 · 조건 · 결과</b>를 자막으로 → <b>공개 실험노트</b>가 됩니다. 투자자·기자·대기업 담당자가 봤을 때 “이 사람 진짜네”가 되는 지점.</p>
+                <p style="margin-bottom:0">· 단, <b>특허 나갈 것은 빼고.</b> 보여줄 것과 감출 것을 나누는 게 오늘 정할 일.</p>
+              </div>
+              <span class="lbl" style="margin-top:10px">합의 내용</span>
+              <div class="field big" data-k="pf_insta" data-ph=""></div>
+            </div>
+            <div>
+              <span class="lbl">기사 — 시장성 어필</span>
+              <div class="card brief" style="margin:0;font-size:13.5px">
+                <p>앵글은 이미 다 있습니다.</p>
+                <p>· “<b>경기도에서 김을 키우는 여성 창업가</b>” — 대기업은 전북·충남<br>· “2070년 김 위기, <b>고수온 종자로 맞선다</b>”<br>· 코리아 푸드테크 공모전 경기도지사상 1등 + 기보벤처캠프 = 보도자료 소재</p>
+                <p style="margin-bottom:0">타깃: 수산·식품 전문지(현대해양, 식품음료신문), 경기 지역지, 스타트업 미디어(플래텀·벤처스퀘어).<br><b>기사 3건이면 IR 덱의 신뢰도 페이지가 채워집니다.</b></p>
+              </div>
+              <span class="lbl" style="margin-top:10px">합의 내용</span>
+              <div class="field big" data-k="pf_press" data-ph=""></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -760,7 +835,7 @@
   function syncChat(){
     const a = document.getElementById('btnChat');
     const raw = (state.chat_url||'').trim();
-    a.href = /^https?:\/\//i.test(raw) ? raw : 'https://claude.ai/recents';
+    a.href = /^https?:\/\//i.test(raw) ? raw : 'https://claude.ai/chat/915961da-7165-430e-bfa3-5b246b8703e3';
   }
 
   // ---- progress
@@ -837,6 +912,14 @@
       QUESTIONS[grp].forEach(q=>{ out += '\n**Q. '+q.t+'**\n'+g(q.k)+'\n'; });
       extras[grp].forEach(id=>{ out += '\n**Q. '+g(id+'_q')+'**\n'+g(id)+'\n'; });
     });
+    out += '\n## 포트폴리오 설계 (1년)\n';
+    out += '- [특허 공개 경고] 출원 전 인스타 공개 = 신규성 상실 위험. 대표님 답변: '+g('ip_warn')+'\n';
+    out += '- ① IP(특허·품종권): '+g('pf_ip')+'\n';
+    out += '- ② 유전자원(종자 뱅크): '+g('pf_gene')+'\n';
+    out += '- ③ 데이터(생장 데이터셋): '+g('pf_data')+'\n';
+    out += '- ④ 증거(어민 파일럿·제3자 검증·논문): '+g('pf_evid')+'\n';
+    out += '- 인스타 포트폴리오화: '+g('pf_insta')+'\n';
+    out += '- 언론 노출: '+g('pf_press')+'\n';
     out += '\n## 포지셔닝 한 문장\n'+g('pos_one')+'\n\n대표님 수정안: '+g('pos_own')+'\n';
     out += '\n## 수익 3축 순서\n';
     out += '- ['+g('ax1n')+'] 김 종자·원초 B2B: '+g('ax1')+'\n';
