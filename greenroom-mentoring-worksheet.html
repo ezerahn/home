@@ -55,6 +55,8 @@
   .sub-tab:hover{color:var(--ink);border-color:var(--rule);}
   .sub-tab.on{background:var(--tank);color:#fff;border-color:var(--tank);}
   .sub-tab.star.on{background:var(--mark);border-color:var(--mark);}
+  .sub-tab.mine{color:#B03A18;}
+  .sub-tab.mine.on{background:#FF5019;border-color:#FF5019;color:#fff;}
 
   main{max-width:940px;margin:0 auto;padding:26px 18px;}
   .panel{display:none;} .panel.on{display:block;}
@@ -69,6 +71,12 @@
   .fact{background:#E7EEE9;border-color:#C6D5CB;}
   .ask{background:#F6EFE0;border-color:#E0CFA6;}
   .risk{background:#FCEBEB;border-color:#F09595;}
+  .story{background:#FFF1EC;border-color:#FFC4AD;}
+  .story .when{font-size:11px;letter-spacing:.1em;color:#B03A18;font-weight:700;margin-bottom:7px;}
+  .story h3{font-family:var(--serif);font-size:18px;margin:0 0 8px;color:#7A2A10;font-weight:700;}
+  .story .say{background:#fff;border-left:3px solid #FF5019;border-radius:0;padding:11px 14px;margin:10px 0 0;
+    font-family:var(--serif);font-size:15.5px;line-height:1.75;color:var(--ink);}
+  .story .say b{color:#B03A18;}
   .card p{margin:0 0 8px;font-size:14px;}
   .card p:last-child{margin-bottom:0;}
   .card strong{color:var(--tank);}
@@ -153,6 +161,8 @@
     section{page-break-inside:avoid;margin-bottom:16px;}
     .card{border-color:#bbb;padding:8px 10px;}
     .fact,.ask,.risk{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .story{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .story .say{border-left:3px solid #333;}
     .field{border-color:#ccc;background:#fff !important;min-height:auto;}
     .field:empty{min-height:32px;}
     .field:empty::before{content:'';}
@@ -250,6 +260,7 @@
               <button data-go="1-4"><b>3. 계정 진단</b><small>10분 · 먼저 잘한다고 인정해주기</small></button>
               <button data-go="1-5"><b>4. 진단 질문</b><small>40분 · 듣는 시간</small></button>
               <button data-go="1-6"><b>5. 숙제 내주기</b><small>10분 · 오늘의 진짜 산출물</small></button>
+              <button data-go="1-7" style="border-color:#FFC4AD;background:#FFF1EC"><b>◈ 내 경험 카드</b><small>어느 대목에서 무슨 이야기를</small></button>
             </div>
           </div>
 
@@ -257,7 +268,70 @@
             <span><i style="background:#E7EEE9;border:1px solid #C6D5CB"></i> 초록 = 확인된 팩트</span>
             <span><i style="background:#F6EFE0;border:1px solid #E0CFA6"></i> 노랑 = 물어볼 것</span>
             <span><i style="background:#FCEBEB;border:1px solid #F09595"></i> 빨강 = 위험 신호</span>
+            <span><i style="background:#FFF1EC;border:1px solid #FFC4AD"></i> 코랄 = 내 경험 카드</span>
             <span><i style="background:#14453B"></i> 남색 = 정의하고 나갈 것</span>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="1-7" data-title="◈ 내 경험 카드" data-mine="1">
+        <section>
+          <div class="eyebrow">멘토 전용 · 세션 중 참고</div>
+          <h2>내 경험 카드 — 어느 대목에서 무슨 이야기를</h2>
+          <p class="lede"><b>성공담이 아니라 후회담으로 꺼내세요.</b> “저는 이렇게 해서 잘됐어요”가 아니라 “저는 이걸 몰라서 몇 년을 썼어요”로. 그래야 방어하지 않고 듣습니다.</p>
+
+          <div class="card story">
+            <div class="when">생산 vs 육종 직후 · 오늘 가장 강력한 카드</div>
+            <h3>① “우리는 밀키트가 아니다”를 정의하느라 보낸 10년</h3>
+            <p>정체성 정의는 그린룸의 ‘생산 vs 육종’과 <b>완전히 같은 구조의 문제</b>입니다. 상미님도 “밀키트가 아니다”라고 선을 그을지, 다르게 설명할지 오래 씨름했고 결국 <b>“클래스에서 증명하고, 박스로 판다”</b>로 정리해 그것이 회사의 척추가 됐습니다.</p>
+            <div class="say">“저도 10년을 ‘밀키트가 아니다’라고 설명하는 데 썼어요. 그런데 그건 <b>남과 다르다는 말</b>이지 <b>내가 뭐냐는 말</b>이 아니더라고요.<br>대표님, 남이랑 뭐가 다른지 말고 — <b>당신이 뭘 파는 회사인지</b> 한 문장으로 말해보세요.”</div>
+            <div style="margin-top:10px"><span class="lbl">반응 메모</span><div class="field one" data-k="st1" data-ph=""></div></div>
+          </div>
+
+          <div class="card story">
+            <div class="when">계정 진단할 때</div>
+            <h3>② 1,100편을 팔지 않고 그냥 풀었던 이야기</h3>
+            <p>이 대표님도 지금 인스타에 <b>김 배양 노하우를 전부 공개</b>하고 있습니다 — 종자, 사상체, 현미경 뷰까지. 상미님은 이걸 이미 해봤고 <b>양면을 다 압니다.</b> 자산이 됐다는 것, 그리고 그게 매출이 되기까지 몇 년이 걸렸다는 것.</p>
+            <p><b>한 가지는 반드시 짚으세요.</b> 상미님이 공개한 건 레시피(어차피 못 막는 것)였지만, <b>종자는 다릅니다.</b> 이 대표님은 아직 품종보호권이 없는 상태에서 배양 노하우를 공개하고 있습니다.</p>
+            <div class="say">“저도 1,100편을 그냥 다 풀었어요. 팔 수 있는 걸 선물로 줬죠. 후회는 안 해요.<br>근데 <b>그게 매출이 되기까지 몇 년이 걸리는지도 압니다.</b> 대표님은 그동안 뭘로 버티실 건가요?”</div>
+            <div style="margin-top:10px"><span class="lbl">반응 메모</span><div class="field one" data-k="st2" data-ph=""></div></div>
+          </div>
+
+          <div class="card story" style="border-width:2px;border-color:#FF5019">
+            <div class="when">★ 정의 1을 물을 때 · 오늘의 정점</div>
+            <h3>③ 수상은 매출이 아니다</h3>
+            <p>iF 디자인 어워드 2017 · 대한민국 소비자대상 2년 연속 · 글로벌파워브랜드 대상 · 국회 표창 두 번 · 시리즈A 투자. <b>그런데 지금도 회사 자료의 ‘확인 필요’ 목록에는 매출 항목이 비어 있습니다.</b></p>
+            <p>이 대표님은 지금 <b>코리아 푸드테크 공모전 경기도지사상 1등, 기보벤처캠프 선정</b>에 취해 있을 수 있습니다. 좋은 일이지만 — <b>이걸 정확히 말해줄 수 있는 사람은 상미님뿐입니다.</b> 자랑이 아니라 자기 상처를 내주는 것이라 훨씬 세게 박힙니다.</p>
+            <div class="say">“저 상 많이 받았어요. iF도 받고, 소비자대상 2년 연속 받고, 국회 표창도 두 번 받았어요.<br><b>그중에 매출이 된 건 하나도 없습니다.</b><br>대표님, 상은 문을 열어주는 거지 돈을 벌어주는 게 아니에요. <b>누가 돈을 낼 건지</b>는 따로 정하셔야 합니다.”</div>
+            <div style="margin-top:10px"><span class="lbl">반응 메모</span><div class="field one" data-k="st3" data-ph=""></div></div>
+          </div>
+
+          <div class="card story">
+            <div class="when">위험 신호 — 대기업 종자 내재화를 얘기할 때</div>
+            <h3>④ 코로나 — 쌓은 게 하루아침에 사라진 날</h3>
+            <p>이 대표님의 최대 리스크는 <b>대기업이 종자까지 내재화하는 것</b>입니다. 외부 요인 하나로 다 날아갈 수 있어요. 상미님은 그걸 <b>실제로 겪은 사람</b>입니다. 클래스로 쌓은 모든 게 무너졌고, 거기서 아카이빗이 태어났죠.</p>
+            <div class="say">“저는 코로나로 다 날아가봤어요. 그때 남은 건 <b>레시피 자산이랑 사람</b>이었어요.<br>대표님, 대기업이 종자를 자체 개발하면 어떻게 하실 건가요? <b>그때 남는 게 뭔지</b>를 지금 정해두셔야 합니다.”</div>
+            <div style="margin-top:10px"><span class="lbl">반응 메모</span><div class="field one" data-k="st4" data-ph=""></div></div>
+          </div>
+
+          <div class="card story">
+            <div class="when">마무리 · 숙제 줄 때 — 힘 실어주는 카드</div>
+            <h3>⑤ 발품 80명 — 그게 평생 자산이 됐다</h3>
+            <p>개발자들이 플랫폼을 만들 때, 상미님은 겨울 내내 요리 선생님 80분을 직접 찾아다녔습니다. 그게 평생 자산이 됐죠. 이 대표님도 <b>태안 김장수 어민, 캐나다 INBADA를 직접 찾아다녔습니다. 같은 종류의 사람이에요.</b></p>
+            <div class="say">“저도 개발자들이 플랫폼 만들 때 겨울 내내 발품 팔았어요. 그때 만난 80분이 아직도 제 자산입니다.<br><b>태안 김장수님, 그거 놓지 마세요.</b> 어민 한 분이 대표님 종자의 첫 고객이자 첫 레퍼런스입니다.”</div>
+            <div style="margin-top:10px"><span class="lbl">반응 메모</span><div class="field one" data-k="st5" data-ph=""></div></div>
+          </div>
+
+          <div class="card story">
+            <div class="when">마무리 · 실질적으로 줄 수 있는 것</div>
+            <h3>⑥ MYSC — 임팩트 투자 연결</h3>
+            <p>공공의주방 시리즈A를 이끈 곳이 <b>MYSC(임팩트 투자사)</b>입니다. 그린룸의 스토리는 임팩트 투자와 정확히 맞습니다 — <b>기후변화 · 어민 생계 · 식량 안보.</b></p>
+            <p><b>상은 못 만들어드려도 투자자 소개는 만들어드릴 수 있습니다.</b> 오늘 세션에서 대표님이 가장 고마워할 것일 수도 있어요.</p>
+            <div style="margin-top:10px"><span class="lbl">연결하기로 한 사람 / 보내주기로 한 것</span><div class="field one" data-k="st6" data-ph=""></div></div>
+          </div>
+
+          <div class="card ask">
+            <p style="margin-bottom:0"><strong>주의.</strong> 이야기는 <b>2~3개만</b> 쓰세요. 여섯 개를 다 하면 상미님 이야기 듣는 자리가 됩니다. 오늘의 주인공은 이 대표님입니다.</p>
           </div>
         </section>
       </div>
@@ -767,7 +841,7 @@
     const box=document.getElementById('subs'); box.innerHTML='';
     document.querySelectorAll('.panel[data-panel="'+cur+'"] .sheet').forEach(sh=>{
       const b=document.createElement('button');
-      b.className='sub-tab'+(sh.dataset.star?' star':'')+(sh.classList.contains('on')?' on':'');
+      b.className='sub-tab'+(sh.dataset.star?' star':'')+(sh.dataset.mine?' mine':'')+(sh.classList.contains('on')?' on':'');
       b.textContent=sh.dataset.title;
       b.onclick=()=>showSheet(sh.dataset.sheet);
       box.appendChild(b);
@@ -867,6 +941,13 @@
     o+='- 계정 진단 반응: '+g('acct_react')+'\n';
     o+='- 경기도·수과원 관계: '+g('comp_gov')+'\n';
     o+='- 스타트업 접촉: '+g('comp_startup')+'\n';
+    o+='\n## 내 경험 카드 — 반응\n';
+    o+='- ① 밀키트가 아니다(정체성): '+g('st1')+'\n';
+    o+='- ② 1,100편을 그냥 풀었다: '+g('st2')+'\n';
+    o+='- ③ 수상은 매출이 아니다: '+g('st3')+'\n';
+    o+='- ④ 코로나로 다 날아가봤다: '+g('st4')+'\n';
+    o+='- ⑤ 발품 80명: '+g('st5')+'\n';
+    o+='- ⑥ MYSC 임팩트 투자 연결: '+g('st6')+'\n';
     o+='- 협업 접점: '+g('fu_collab')+'\n';
     o+='- 내가 할 일: '+g('fu_todo')+'\n';
     o+='- 자유 메모: '+g('fu_free')+'\n';
