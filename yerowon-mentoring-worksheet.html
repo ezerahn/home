@@ -130,8 +130,8 @@
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .lbl{font-size:11px;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-bottom:4px;display:block;}
 
-  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;}
-  th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;table-layout:fixed;}
+  th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top;word-break:keep-all;overflow-wrap:anywhere;}
   th{background:#F3E4E8;font-weight:600;font-size:12px;color:var(--tank);}
   td .field{border:0;background:transparent;padding:2px;min-height:26px;}
   td .field:focus{box-shadow:none;background:#F0F7F4;}
@@ -275,37 +275,124 @@
       <div class="sheet" data-sheet="1-2" data-title="1. 시장 · 경쟁 구도">
         <section>
           <div class="eyebrow">00:20 – 00:40</div>
-          <h2>시장은 크다. 그런데 대기업이 이미 있다.</h2>
-          <p class="lede">시장 자체는 확실합니다. 문제는 <b>혼자가 아니라는 것</b>입니다. 대표님이 이 지형을 정확히 봐야 합니다.</p>
+          <h2>시장은 크다. 그런데 대기업이 갈래마다 자리를 잡았다.</h2>
+          <p class="lede">시장은 진짜입니다. 문제는 <b>혼자가 아니라는 것</b>입니다. 그리고 <b>“CJ가 독식”은 아닙니다</b> — 갈래가 여럿이고, 갈래마다 강자가 다릅니다. 예로원이 어디로 들어갈지가 오늘의 핵심입니다.</p>
 
           <div class="card fact">
-            <p><strong>시장은 진짜입니다.</strong> 초고령사회 진입으로 케어푸드 시장이 <b>2조 원대</b>로 추정됩니다. 삼킴장애(연하곤란)는 고령층·암환자·만성질환자에게 흔하고, 삼킴 기능이 떨어지면 영양 섭취가 어려워 치료 지속조차 힘들어집니다. <b>“먹는 즐거움”은 실제 의료·삶의 질 문제입니다.</b></p>
+            <p><strong>시장 크기 — 정직하게.</strong> 케어푸드 시장은 aT 기준 2017년 1조 원을 넘었고, <b>2025년 3조 원 돌파가 예상</b>됩니다. (“2조”는 2020년 시점 전망치였고, 지금은 3조가 최신 추정)</p>
+            <p style="margin-bottom:0">단, 이 숫자는 <b>환자식·실버푸드·유아식까지 포함한 넓은 케어푸드</b>입니다. <b>“연하식”만 떼면 훨씬 작습니다.</b> IR에서 “3조 시장”을 통째로 자기 시장인 것처럼 쓰면 투자자가 바로 겁니다. 성장은 구조적으로 확실 — 2025년 초고령사회(65세 이상 20%) 진입.</p>
           </div>
 
           <div class="card fact">
             <p><strong>용어부터 — 대표님이 하는 건 “연하식”입니다.</strong></p>
             <p style="margin-bottom:0">· <b>연화식(軟化食)</b> — 씹기(저작) 어려운 사람을 위해 <b>부드럽게</b> 만든 음식<br>
                · <b>연하식(嚥下食)</b> — 삼키기(연하)가 어려운 사람을 위해 <b>점도·경도를 조절</b>한 음식<br>
-               예로원은 연하식이고, <b>거기에 “원래 모양을 복원한다”는 심미성</b>을 더한 것이 차별점입니다.</p>
+               예로원은 연하식이고, <b>거기에 “원래 모양을 복원한다”는 심미성”</b>을 더한 것이 차별점입니다.</p>
+          </div>
+
+          <div class="card">
+            <span class="lbl">시장 지도 — 갈래마다 강자가 다르다 (독식 아님)</span>
+            <table>
+              <thead><tr><th style="width:140px">갈래</th><th style="width:175px">대표 주자</th><th>접근</th></tr></thead>
+              <tbody>
+                <tr><td><b>B2B 복지·요양원 급식</b></td><td>CJ프레시웨이(헬씨누리)</td><td>식자재 유통 + 급식. <b>이 채널 최강</b></td></tr>
+                <tr><td><b>B2C 개인 맞춤 건강식</b></td><td>현대그린푸드(그리팅)</td><td>가정 배송</td></tr>
+                <tr><td><b>연하식 무스 제품</b></td><td>신세계푸드(이지밸런스)</td><td>병원·B2B → B2C</td></tr>
+                <tr><td><b>환자용 특수식품</b></td><td>대상웰라이프(뉴케어)·정식품(그린비아)</td><td>분말·드링크</td></tr>
+                <tr><td><b>단백질 보충식</b></td><td>매일유업(셀렉스)</td><td>B2C</td></tr>
+              </tbody>
+            </table>
           </div>
 
           <div class="card risk">
-            <p><strong>⚠ 이미 대기업이 들어와 있습니다.</strong></p>
-            <p style="margin-bottom:0">· <b>신세계푸드</b> — 케어푸드 브랜드 ‘이지밸런스’로 <b>연하식 무스 5종</b>(소불고기·닭고기·가자미·동파육·애호박) 출시. B2B(요양원·병원) 먼저, B2C 확대 방침<br>
-               · <b>아워홈·현대그린푸드·풀무원</b> 등도 케어푸드 진출<br>
-               · 정부(농기평·식품클러스터진흥원)도 고령친화식품 R&amp;D·인프라 지원 중</p>
+            <p><strong>⚠ CJ가 얼마나 큰가 — 그리고 방향이 예로원과 반대다.</strong></p>
+            <p>CJ프레시웨이 2025년 매출 <b>3조 4,811억 원</b>, 영업이익 <b>1,017억 원</b>(창사 최대). 케어푸드 브랜드(아이누리·헬씨누리) 매출은 2022년 이미 2,000억 원을 넘겼고 연평균 30%대 성장. <b>“무스 몇 개”가 아니라 요양원에 들어가는 식자재·급식 전체가 케어푸드 매출</b>로 잡히는 구조 — 이게 CJ의 진짜 무기입니다.</p>
+            <p style="margin-bottom:0">그리고 CJ가 미는 신성장 모델이 <b>“키친리스”(조리를 아예 없애는 급식)</b>입니다. 그런데 예로원 몰드 방식은 <b>“조리를 하나 더 늘리는”</b> 거라 <b>트렌드와 정반대</b>입니다. 요양원 주방은 이미 CJ 고객일 가능성이 높습니다.</p>
           </div>
 
-          <div class="card fact">
-            <p><strong>그런데 — 그들이 안 하는 것이 예로원의 자리입니다.</strong></p>
-            <p>대기업 연하식은 대부분 <b>“무스”</b>입니다. 부드럽게 갈아 틀에 굳힌 것. <b>“원래 음식의 형태를 그대로 복원”</b>하는 건 아직 대기업이 대량으로 못 합니다. 3D 푸드프린팅·정밀 몰드가 필요하니까요.</p>
-            <p style="margin-bottom:0"><b>즉 예로원의 해자는 “연하식”이 아니라 “복원(심미성)”입니다.</b> 이걸 헷갈리면 대기업과 정면충돌합니다.</p>
+          <div class="card fact" style="border-width:2px;border-color:#C25E7A">
+            <p><strong>★ 그런데 — 아무도 안 하는 여섯 번째 갈래가 있습니다.</strong></p>
+            <p style="font-family:var(--serif);font-size:16px;color:#9C3D5C;text-align:center;margin:8px 0"><b>“3D 프린팅 개인 맞춤 고정밀 복원 (프리미엄)”</b></p>
+            <p style="margin-bottom:0">대기업은 <b>대량·표준·저가 무스</b>로 갑니다. CJ의 “복원”도 다진 걸 모양내는 수준이지 3D 프린팅이 아닙니다. <b>개인 맞춤·고정밀·프리미엄은 비어 있습니다.</b> 예로원의 유일한 무기(정밀 복원)가 통하는 자리입니다. 지금은 작지만 성장 여지가 큽니다.</p>
+          </div>
+
+          <div class="card">
+            <span class="lbl">갈래별 — 예로원의 경쟁력 · 생존확률 · 전략 (생존확률은 판단상의 감)</span>
+            <style>
+              .surv{display:flex;align-items:center;gap:8px;white-space:nowrap}
+              .survbar{flex:0 0 62px;height:9px;border-radius:5px;background:#EADFE3;overflow:hidden}
+              .survbar>i{display:block;height:100%;border-radius:5px}
+              .survtxt{font-size:12px;font-weight:700}
+              .s-hi>i{width:80%;background:#4BA36B} .s-hi{color:#2F7A4C}
+              .s-mh>i{width:64%;background:#6FB98A} .s-mh{color:#3C7E58}
+              .s-md>i{width:48%;background:#E0A94E} .s-md{color:#B07C1E}
+              .s-lo>i{width:26%;background:#D98A6A} .s-lo{color:#B0552F}
+              .s-vlo>i{width:14%;background:#Cf6a6a} .s-vlo{color:#A33A3A}
+              .s-na>i{width:8%;background:#B8AAB0} .s-na{color:#8A6B76}
+              .survsub{font-size:11px;color:var(--muted);margin-top:2px;white-space:nowrap}
+            </style>
+            <table>
+              <thead><tr><th style="width:100px">갈래</th><th style="width:158px">생존확률</th><th>예로원의 길</th></tr></thead>
+              <tbody>
+                <tr><td><b>① B2B 급식</b></td><td>
+                  <div class="surv s-vlo"><span class="survbar"><i></i></span><span class="survtxt">매우 낮음</span></div>
+                  <div class="survsub">직접 급식 기준 · 기술납품이면 <b style="color:#B07C1E">중</b></div></td>
+                  <td>급식으로 붙지 말 것. <b>CJ·급식업체에 몰드·복원기술 납품(B2B2B)</b>로만</td></tr>
+                <tr style="background:#FBE9EE"><td><b>② B2C 맞춤</b></td><td>
+                  <div class="surv s-mh"><span class="survbar"><i></i></span><span class="survtxt">중상 ★</span></div></td>
+                  <td>예로원 무기가 가장 잘 먹힘. <b>프리미엄 가정 맞춤 → 구독</b></td></tr>
+                <tr><td><b>③ 무스 제품</b></td><td>
+                  <div class="surv s-lo"><span class="survbar"><i></i></span><span class="survtxt">낮음</span></div></td>
+                  <td>임상·특허로 무장한 신세계와 정면승부 금물. 굳이 가면 <b>니치 메뉴</b>만</td></tr>
+                <tr><td><b>④ 특수식품</b></td><td>
+                  <div class="surv s-vlo"><span class="survbar"><i></i></span><span class="survtxt">매우 낮음</span></div>
+                  <div class="survsub">단독 기준 · 협업이면 가능</div></td>
+                  <td>규제·자본 장벽 최상. <b>협업으로만</b>(영양설계+형태복원)</td></tr>
+                <tr><td><b>⑤ 단백질식</b></td><td>
+                  <div class="surv s-na"><span class="survbar"><i></i></span><span class="survtxt">부적합</span></div></td>
+                  <td>접점 없음. <b>들어가지 말 것</b>(다각화 함정)</td></tr>
+                <tr style="background:#FBE9EE"><td><b>⑥ 정밀 복원</b></td><td>
+                  <div class="surv s-hi"><span class="survbar"><i></i></span><span class="survtxt">상 ★</span></div></td>
+                  <td>비어 있는 자리. <b>예로원의 유일한 상급 포지션</b></td></tr>
+              </tbody>
+            </table>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:11.5px;color:var(--muted)">
+              <span class="surv s-hi"><span class="survbar"><i></i></span><span class="survtxt">상</span></span>
+              <span class="surv s-mh"><span class="survbar"><i></i></span><span class="survtxt">중상</span></span>
+              <span class="surv s-md"><span class="survbar"><i></i></span><span class="survtxt">중</span></span>
+              <span class="surv s-lo"><span class="survbar"><i></i></span><span class="survtxt">낮음</span></span>
+              <span class="surv s-vlo"><span class="survbar"><i></i></span><span class="survtxt">매우 낮음</span></span>
+              <span class="surv s-na"><span class="survbar"><i></i></span><span class="survtxt">부적합</span></span>
+            </div>
           </div>
 
           <div class="card ask">
-            <p style="font-family:var(--serif);font-size:17px;margin-bottom:10px"><strong>“신세계 이지밸런스랑 뭐가 다릅니까?”</strong></p>
-            <p style="margin-bottom:0">이 질문에 <b>한 문장으로 답이 안 나오면</b>, 그게 오늘 정의할 1순위입니다. “무스 말고 모양을 살린다”가 소비자에게 <b>돈을 더 낼 이유가 되는지</b>가 핵심입니다.</p>
-            <div style="margin-top:10px"><span class="lbl">대표님 답 / 반응</span><div class="field big" data-k="mk_react" data-ph=""></div></div>
+            <p style="font-family:var(--serif);font-size:17px;margin-bottom:10px"><strong>결론 — 예로원이 갈 곳 / 피할 곳</strong></p>
+            <p style="margin-bottom:0">· <b>진입</b>: ② B2C 맞춤 + ⑥ 프리미엄 복원 (무기가 통함)<br>
+               · <b>기술로만</b>: ① B2B (직접 급식 말고 납품·B2B2B)<br>
+               · <b>회피</b>: ③ 무스 정면승부 · ④ 특수식품 단독 · ⑤ 단백질</p>
+          </div>
+
+          <div class="card">
+            <span class="lbl">전체 1 · 2 · 3단계 전략</span>
+            <table>
+              <thead><tr><th style="width:130px">단계</th><th>할 일</th></tr></thead>
+              <tbody>
+                <tr><td><b>1. 증명 (0~3개월)</b></td><td>프리미엄 B2C 또는 요양원 1곳에서 <b>유료로 “복원이 정말 다르다”를 증명</b> + 규제·물성·원가 확인</td></tr>
+                <tr><td><b>2. 확장 (3~9개월)</b></td><td>재구매·만족도 데이터로 <b>구독화 또는 급식업체 납품</b> + 시드 클로징</td></tr>
+                <tr><td><b>3. 레버리지 (9~18개월)</b></td><td>그 레퍼런스로 <b>대기업에 기술 공급(B2B2B)</b> 또는 지자체 복지 채널 진입</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card risk">
+            <p style="margin-bottom:0"><strong>★ 이 표 전체의 전제.</strong> 위 전략은 모두 <b>“예로원이 진짜 3D 프린팅 정밀 복원 기술을 갖고 있느냐”</b>에 달렸습니다. 실제로 <b>몰드 수준</b>이라면 ②·⑥의 생존확률은 확 떨어지고 ①(대량 몰드 납품)만 남습니다. <b>그래서 다음 시트(제품이냐 기기냐)가 이 전략의 전제입니다.</b> <button data-go="1-3" style="background:transparent;border:0;color:#9C3D5C;font-weight:700;cursor:pointer;text-decoration:underline;padding:0;font-family:var(--sans);font-size:14px">→ 제품인가 기기인가 시트로</button></p>
+          </div>
+
+          <div class="card ask">
+            <p style="font-family:var(--serif);font-size:17px;margin-bottom:10px"><strong>“신세계·CJ랑 뭐가 다릅니까? 한 문장으로.”</strong></p>
+            <p style="margin-bottom:0">이 질문에 한 문장으로 답이 안 나오면, 그게 오늘 정의할 1순위입니다. “모양을 살린다”가 <b>돈을 더 낼 이유</b>가 되는지가 핵심입니다.</p>
+            <div style="margin-top:10px"><span class="lbl">대표님 답 / 반응</span><div class="field big" data-k="mk_react" data-ph="어느 갈래로 갈지 / 정밀 복원 기술 수준 / 반응"></div></div>
           </div>
         </section>
       </div>
@@ -318,12 +405,12 @@
 
           <div class="card">
             <table>
-              <thead><tr><th style="width:120px">무엇을 파나</th><th style="width:150px">고객</th><th>성격</th></tr></thead>
+              <thead><tr><th style="width:150px">무엇을 파나</th><th style="width:130px">고객</th><th>성격</th></tr></thead>
               <tbody>
                 <tr><td><b>완제품 연하식</b></td><td>요양원·병원·가정</td><td>식품 제조·유통업. 재고·유통기한·콜드체인. <b>대기업과 경쟁</b></td></tr>
-                <tr><td><b>3D 푸드프린터 (기기)</b></td><td>요양원·병원 주방, 급식업체</td><td>장비 판매·렌탈. 하드웨어 스타트업. 매출 크지만 개발·AS 부담</td></tr>
-                <tr><td><b>실리콘 몰드 (소모품)</b></td><td>급식·조리 현장</td><td>가장 가벼움. 재구매 발생. 단 진입장벽 낮음</td></tr>
-                <tr><td><b>솔루션 (기기+레시피+운영)</b></td><td>요양원·병원 통째로</td><td>B2B 구독. 록인 강하지만 영업 사이클 긺</td></tr>
+                <tr><td><b>3D 푸드프린터<br>(기기)</b></td><td>요양원·병원 주방, 급식업체</td><td>장비 판매·렌탈. 하드웨어 스타트업. 매출 크지만 개발·AS 부담</td></tr>
+                <tr><td><b>실리콘 몰드<br>(소모품)</b></td><td>급식·조리 현장</td><td>가장 가벼움. 재구매 발생. 단 진입장벽 낮음</td></tr>
+                <tr><td><b>솔루션<br>(기기+레시피+운영)</b></td><td>요양원·병원 통째로</td><td>B2B 구독. 록인 강하지만 영업 사이클 긺</td></tr>
               </tbody>
             </table>
           </div>
@@ -650,11 +737,12 @@
           <div class="eyebrow">부록</div>
           <h2>자료 출처</h2>
           <div class="card">
-            <p>· 아시아경제 — 신세계푸드 ‘이지밸런스’ 연하식 5종, 케어푸드 시장 2조원대 (연화식/연하식 구분)</p>
-            <p>· 전국인력신문 · 코메디닷컴 · 클리닉저널 — 3D 푸드프린팅 삼킴장애 식품 (2026)</p>
-            <p>· 한국식품산업클러스터진흥원 고령친화산업지원센터 · 농기평 — 고령친화식품 R&amp;D·지정</p>
-            <p>· 한국농촌경제연구원(KREI) — 3D 푸드프린팅 시장 규모·푸드테크 실태</p>
-            <p style="margin-bottom:0">· 이투데이 — 개인 맞춤 식이설계 (2025)</p>
+            <p>· 스포츠서울·헤럴드경제·신세계그룹 뉴스룸 (2020.1) — 신세계푸드 ‘이지밸런스’ 연하식 5종 론칭(소불고기·닭고기·가자미구이·동파육·애호박볶음 무스), 임상시험 안전성 확인, 특허 4건 출원, 일본 뉴트리와 협력(2018)</p>
+            <p>· 이지밸런스 공식몰 — 현재 라인업 확장(버섯·멸치·참치·연어·나박김치 무스 등)</p>
+            <p>· 이데일리 (2021.5) — “죽 대신 무스” 케어푸드 다양화, <b>비싼 가격이 숙제</b>. 무스 4종 1만 원(닥터의도시락). <b>CJ프레시웨이는 다진 재료를 원재료 모양으로 복원해 제공</b></p>
+            <p>· 비즈워치(2023)·전자신문·잡코리아 — CJ프레시웨이 케어푸드(아이누리·헬씨누리) 2022년 매출 2,013억(전년비 25%↑), 2020~22 연평균 31% 성장</p>
+            <p>· CJ프레시웨이 뉴스룸 (2026.2) — 2025년 매출 3조 4,811억·영업이익 1,017억(창사 최대), 키친리스 매출 1,046억(2023)</p>
+            <p style="margin-bottom:0">· aT·잡코리아 — 케어푸드 시장 2017년 1조 돌파 → 2025년 3조 예상 (환자식·실버·유아식 포함 광의)</p>
           </div>
           <div class="card">
             <p style="margin-bottom:0;font-size:13px;color:var(--muted)"><b>※ 이 워크시트의 규제·물성 관련 내용은 방향 제시용이며 법적 판단이 아닙니다.</b> 정확한 인허가는 식약처·식품인허가 전문가 확인이 필요합니다.</p>
