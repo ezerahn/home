@@ -1,0 +1,873 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#2A1420; --tank:#6B2B45; --water:#C25E7A; --foam:#F0C4D0;
+    --paper:#F7F1F0; --card:#FFFFFF; --rule:#E6D6DA; --muted:#8A6B76; --mark:#C08A2E;
+    --sans:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;
+    --serif:'Gowun Batang','Nanum Myeongjo',serif;
+  }
+  *{box-sizing:border-box;}
+  .gr-root{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.65;font-size:15px;padding-bottom:70px;}
+
+  .gr-bar{display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding:11px 18px;
+    background:var(--tank);color:#EAF3EF;border-bottom:2px solid var(--ink);}
+  .gr-bar h1{font-family:var(--serif);font-size:17px;font-weight:700;margin:0;white-space:nowrap;}
+  .gr-bar .sub{font-size:12px;color:var(--foam);margin-right:auto;white-space:nowrap;}
+  .gr-btn{font-family:var(--sans);font-size:13px;font-weight:600;background:transparent;color:#EAF3EF;
+    border:1px solid rgba(234,243,239,.4);border-radius:4px;padding:6px 12px;cursor:pointer;transition:.15s;}
+  .gr-btn:hover{background:rgba(234,243,239,.14);}
+  .gr-btn:focus-visible{outline:2px solid var(--foam);outline-offset:2px;}
+  .gr-btn.solid{background:var(--water);border-color:var(--water);color:#04211B;}
+  .gr-btn.solid:hover{background:var(--foam);}
+  .gr-btn.danger:hover{background:rgba(255,120,90,.25);}
+  a.gr-btn{text-decoration:none;display:inline-block;line-height:1.4;}
+  a.gr-btn.chat{border-color:var(--foam);color:var(--foam);}
+  a.gr-btn.chat:hover{background:var(--foam);color:#04211B;}
+  a.gr-btn.insta{border-color:#E4A0BC;color:#F3CBDA;}
+  a.gr-btn.insta:hover{background:#E4A0BC;color:#3A1224;}
+  #saveState{font-size:12px;color:var(--foam);min-width:68px;text-align:right;}
+
+  .meta{background:#F3E4E8;border-bottom:1px solid var(--rule);}
+  .meta-in{max-width:940px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .meta-in .mi{display:flex;align-items:center;gap:7px;font-size:13px;}
+  .meta-in .mi span{font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:600;white-space:nowrap;}
+  .meta-in .goal{flex:1;min-width:240px;}
+  .meta-in .field{min-height:auto;padding:5px 9px;font-size:13.5px;background:#fff;}
+
+  .tabs{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--rule);
+    box-shadow:0 1px 0 rgba(0,0,0,.03);}
+  .stages{display:flex;justify-content:center;gap:0;overflow-x:auto;}
+  .stage-tab{flex:0 0 auto;background:transparent;border:0;border-bottom:3px solid transparent;
+    padding:12px 26px;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--muted);
+    white-space:nowrap;transition:.15s;text-align:center;}
+  .stage-tab:hover{color:var(--ink);}
+  .stage-tab.on{color:var(--tank);border-bottom-color:var(--water);}
+  .stage-tab small{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:2px;}
+  .stage-tab.on small{color:var(--water);}
+  .stage-tab b{color:var(--water);}
+
+  .subs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;padding:9px 18px;background:#F3E4E8;
+    border-top:1px solid var(--rule);}
+  .sub-tab{background:transparent;border:1px solid transparent;border-radius:100px;padding:5px 14px;
+    cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--muted);transition:.15s;}
+  .sub-tab:hover{color:var(--ink);border-color:var(--rule);}
+  .sub-tab.on{background:var(--tank);color:#fff;border-color:var(--tank);}
+  .sub-tab.star.on{background:var(--mark);border-color:var(--mark);}
+  .sub-tab.mine{color:#B03A18;}
+  .sub-tab.mine.on{background:#FF5019;border-color:#FF5019;color:#fff;}
+
+  main{max-width:940px;margin:0 auto;padding:26px 18px;}
+  .panel{display:none;} .panel.on{display:block;}
+  .sheet{display:none;} .sheet.on{display:block;}
+  section{margin-bottom:30px;}
+
+  .eyebrow{font-size:11px;letter-spacing:.15em;color:var(--water);font-weight:700;margin-bottom:4px;}
+  h2{font-family:var(--serif);font-size:24px;font-weight:700;margin:0 0 4px;letter-spacing:-.02em;}
+  .lede{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:5px;padding:16px 18px;margin-bottom:10px;}
+  .fact{background:#F3E4E8;border-color:#E0BFCA;}
+  .ask{background:#F6EFE0;border-color:#E0CFA6;}
+  .risk{background:#FCEBEB;border-color:#F09595;}
+  .story{background:#FFF1EC;border-color:#FFC4AD;}
+  .story .when{font-size:11px;letter-spacing:.1em;color:#B03A18;font-weight:700;margin-bottom:7px;}
+  .story h3{font-family:var(--serif);font-size:18px;margin:0 0 8px;color:#7A2A10;font-weight:700;}
+  .story .say{background:#fff;border-left:3px solid #FF5019;border-radius:0;padding:11px 14px;margin:10px 0 0;
+    font-family:var(--serif);font-size:15.5px;line-height:1.75;color:var(--ink);}
+  .story .say b{color:#B03A18;}
+  .card p{margin:0 0 8px;font-size:14px;}
+  .card p:last-child{margin-bottom:0;}
+  .card strong{color:var(--tank);}
+
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);background:var(--card);
+    border:1px solid var(--rule);border-radius:5px;padding:9px 14px;margin-bottom:16px;}
+  .legend span{display:flex;align-items:center;gap:6px;}
+  .legend i{width:13px;height:13px;border-radius:3px;display:inline-block;flex:0 0 13px;}
+
+  .bar{height:8px;background:#DCE5DE;border-radius:100px;overflow:hidden;margin:10px 0 6px;}
+  .bar div{height:100%;background:var(--water);width:0%;transition:width .5s cubic-bezier(.4,0,.2,1);}
+  .barnote{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;}
+
+  .define{background:var(--tank);color:#EAF3EF;border-radius:6px;padding:20px 22px;margin-bottom:14px;}
+  .define .dh{font-size:11px;letter-spacing:.14em;color:var(--foam);font-weight:700;margin-bottom:12px;}
+  .define .row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
+  .define .row:last-child{margin-bottom:0;}
+  .define input[type=checkbox]{margin-top:5px;width:18px;height:18px;flex:0 0 18px;accent-color:var(--water);cursor:pointer;}
+  .define .dq{flex:1;}
+  .define .dq b{font-family:var(--serif);font-size:17px;color:#fff;display:block;margin-bottom:7px;}
+  .define .field{background:rgba(255,255,255,.09);border-color:rgba(234,243,239,.28);color:#fff;}
+  .define .field:empty::before{color:rgba(234,243,239,.42);}
+  .define .field:focus{background:rgba(255,255,255,.15);border-color:var(--foam);box-shadow:none;}
+  .define .bar{background:rgba(255,255,255,.15);}
+  .define .barnote{color:var(--foam);}
+
+  .path{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:6px;}
+  .path button{background:var(--card);border:1px solid var(--rule);border-radius:5px;padding:12px 14px;
+    text-align:left;cursor:pointer;font-family:var(--sans);transition:.15s;}
+  .path button:hover{border-color:var(--water);background:#F0F7F4;}
+  .path button b{display:block;font-size:13.5px;color:var(--ink);margin-bottom:2px;}
+  .path button small{font-size:11.5px;color:var(--muted);}
+
+  .q{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px;}
+  .qn{font-family:var(--serif);font-weight:700;font-size:14px;color:#fff;background:var(--tank);
+    min-width:26px;height:26px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex:0 0 26px;}
+  .qt{font-weight:600;font-size:15px;flex:1;}
+  .qt small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:2px;}
+  .key .qn{background:var(--mark);}
+  .key .qt::after{content:' \2605';color:var(--mark);font-size:12px;}
+
+  .field{font-family:var(--sans);font-size:14.5px;line-height:1.7;border:1px solid var(--rule);border-radius:4px;
+    background:#FCFDFC;padding:10px 12px;min-height:44px;outline:none;white-space:pre-wrap;word-break:break-word;}
+  .field:focus{border-color:var(--water);background:#fff;box-shadow:0 0 0 3px rgba(194,94,122,.14);}
+  .field:empty::before{content:attr(data-ph);color:#A9B6AF;}
+  .field.one{min-height:auto;}
+  .field.big{min-height:84px;}
+  .field.line{border:0;border-bottom:1px solid var(--rule);border-radius:0;background:transparent;padding:6px 2px;min-height:auto;}
+  .field.line:focus{box-shadow:none;border-bottom-color:var(--water);}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .lbl{font-size:11px;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-bottom:4px;display:block;}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px;}
+  th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top;}
+  th{background:#F3E4E8;font-weight:600;font-size:12px;color:var(--tank);}
+  td .field{border:0;background:transparent;padding:2px;min-height:26px;}
+  td .field:focus{box-shadow:none;background:#F0F7F4;}
+
+  .hw{display:flex;gap:11px;align-items:flex-start;margin-bottom:12px;}
+  .hw input{margin-top:5px;width:17px;height:17px;flex:0 0 17px;accent-color:var(--water);cursor:pointer;}
+  .hw div{flex:1;}
+  .hw b{display:block;margin-bottom:3px;}
+  .hw small{color:var(--muted);font-size:12.5px;}
+
+  .addq{background:transparent;border:1px dashed var(--rule);color:var(--muted);width:100%;padding:9px;
+    border-radius:4px;font-family:var(--sans);font-size:13px;cursor:pointer;margin-top:4px;}
+  .addq:hover{border-color:var(--water);color:var(--water);}
+
+  .closing{background:var(--tank);color:#EAF3EF;border-radius:5px;padding:20px 22px;}
+  .closing .eyebrow{color:var(--foam);}
+  .closing .quote{font-family:var(--serif);font-size:17px;line-height:1.75;margin:0 0 12px;}
+  .closing .quote:last-child{margin-bottom:0;}
+
+  @media print{
+    @page{margin:15mm 13mm;}
+    .gr-root{background:#fff;font-size:10.5pt;padding:0;}
+    .gr-bar,.tabs,.addq,.no-print{display:none !important;}
+    .meta{background:#fff;border-bottom:2px solid #333;}
+    main{max-width:none;padding:0;}
+    .panel,.sheet{display:block !important;}
+    section{page-break-inside:avoid;margin-bottom:16px;}
+    .card{border-color:#bbb;padding:8px 10px;}
+    .fact,.ask,.risk{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .story{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .story .say{border-left:3px solid #333;}
+    .field{border-color:#ccc;background:#fff !important;min-height:auto;}
+    .field:empty{min-height:32px;}
+    .field:empty::before{content:'';}
+    .qn{background:#333 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .key .qn{background:#8a6a1f !important;}
+    th{background:#eee !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .define,.closing{background:#fff !important;color:#000;border:2px solid #333;}
+    .define .dh,.define .dq b,.closing .eyebrow,.closing .quote,.define .barnote{color:#000 !important;}
+    .define .field{background:#fff !important;color:#000;border-color:#999;}
+    .bar{display:none;}
+    .path{display:none;}
+    svg{-webkit-print-color-adjust:exact;print-color-adjust:exact;max-width:100%;}
+    h2{font-size:15pt;}
+  }
+  @media (max-width:760px){
+    .grid2{grid-template-columns:1fr;}
+    .stage-tab{padding:10px 14px;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+
+<div class="gr-root">
+
+  <div class="gr-bar">
+    <h1>예로원 · 멘토링</h1>
+    <span class="sub">○○ 대표 / 수라 연하식 · 3D 푸드프린팅</span>
+    <span id="saveState">불러오는 중</span>
+    <a class="gr-btn chat" id="btnChat" href="https://claude.ai/recents" target="_blank" rel="noopener">Claude 채팅</a>
+    <button class="gr-btn solid" onclick="window.print()">인쇄 / PDF</button>
+    <button class="gr-btn" id="btnExport">내려받기</button>
+    <button class="gr-btn danger" id="btnReset">지우기</button>
+  </div>
+
+  <div class="meta">
+    <div class="meta-in">
+      <div class="mi"><span>일시</span><div class="field one" data-k="meta_date" data-ph="2026-07-15" style="min-width:110px"></div></div>
+      <div class="mi"><span>방식</span><div class="field one" data-k="meta_ch" data-ph="온라인" style="min-width:80px"></div></div>
+      <div class="mi"><span>참석</span><div class="field one" data-k="meta_who" data-ph="예로원 대표 / 멘토" style="min-width:130px"></div></div>
+      <div class="mi goal"><span>멘티가 말한 목표</span><div class="field one" data-k="meta_goal" data-ph="시작 5분 안에 물어보고 여기 적기" style="flex:1"></div></div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="stages">
+      <button class="stage-tab on" data-stage="1">1단계 · 방향<small>오늘 · 2시간 · <b id="c1">0/3</b></small></button>
+      <button class="stage-tab" data-stage="2">2단계 · 증명<small>4주 뒤 · <b id="c2">0/2</b></small></button>
+      <button class="stage-tab" data-stage="3">3단계 · 실행<small>8~12주 · <b id="c3">0/2</b></small></button>
+      <button class="stage-tab" data-stage="4">부록<small>자료 · 협업</small></button>
+    </div>
+    <div class="subs" id="subs"></div>
+  </div>
+
+  <main>
+
+    <div class="panel on" data-panel="1">
+
+      <div class="sheet on" data-sheet="1-1" data-title="★ 오늘 정의할 3가지" data-star="1">
+        <section>
+          <div class="eyebrow">오늘의 목적지</div>
+          <h2>오늘 정의하고 나갈 3가지</h2>
+          <p class="lede">6월에 시작한 극초기 기업입니다. <b>지금 필요한 건 전략이 아니라 “첫 고객 한 명”입니다.</b> 2시간에 이 3개만 정하면 성공입니다.</p>
+
+          <div class="define">
+            <div class="dh">오늘 정의하고 나갈 것</div>
+            <div class="row">
+              <input type="checkbox" data-c="d1" aria-label="정의 1">
+              <div class="dq"><b>1. 누구의 무엇을 파는가 — 제품인가, 기기인가, 서비스인가</b>
+                <div class="field one" data-k="def1" data-ph="완제품 연하식 / 3D프린터 기기 / 몰드 / 병원·요양원 솔루션 — 하나만"></div></div>
+            </div>
+            <div class="row">
+              <input type="checkbox" data-c="d2" aria-label="정의 2">
+              <div class="dq"><b>2. 첫 고객 — 병원인가 요양원인가 집(가정)인가</b>
+                <div class="field one" data-k="def2" data-ph="B2B(병원/요양원) vs B2C(가정). 셋은 완전히 다른 사업"></div></div>
+            </div>
+            <div class="row">
+              <input type="checkbox" data-c="d3" aria-label="정의 3">
+              <div class="dq"><b>3. 90일 안에 증명할 한 가지 + 시드 준비</b>
+                <div class="field one" data-k="def3" data-ph="유료 파일럿 1곳 / 재구매 / 규제 확인 — 시드에 들고 갈 지표"></div></div>
+            </div>
+            <div class="bar"><div id="bar1"></div></div>
+            <div class="barnote"><span>오늘 이 3칸을 채우면 성공입니다</span><span id="bn1">0/3</span></div>
+          </div>
+
+          <div class="card ask">
+            <p><strong>극초기 기업의 함정 — “수익 다각화”를 먼저 물어봅니다.</strong> 온라인 강의, 파이프라인 다각화… <b>아직 본 제품도 안 팔렸는데 파이프라인이 여럿일 수 없습니다.</b></p>
+            <p style="font-family:var(--serif);font-size:16px;margin-bottom:0">“다각화는 나중입니다. <b>지금은 첫 고객 한 명이 먼저예요.</b> 돈 내고 산 사람이 한 명이라도 있으세요?”</p>
+          </div>
+
+          <div class="card">
+            <span class="lbl">이 3가지를 정하려면 — 이 순서로 갑니다</span>
+            <div class="path">
+              <button data-go="1-2" style="border-color:#EDB9C8;background:#FBE9EE"><b>1. 시장 · 경쟁 구도</b><small>20분 · 대기업이 이미 들어와 있다</small></button>
+              <button data-go="1-3"><b>2. 제품인가 기기인가</b><small>20분 · 파는 물건을 정한다</small></button>
+              <button data-go="1-4" style="border-color:#F0A9A9;background:#FCEEEE"><b>⚠ 규제 · 인증</b><small>연하식은 규제 산업 — 가장 급함</small></button>
+              <button data-go="1-5"><b>3. 진단 질문</b><small>듣는 시간</small></button>
+              <button data-go="1-6"><b>4. 숙제 내주기</b><small>10분 · 오늘의 진짜 산출물</small></button>
+              <button data-go="1-7" style="border-color:#F3C7A8;background:#FBF0E8"><b>◈ 내 경험 카드</b><small>어느 대목에서 무슨 이야기를</small></button>
+            </div>
+          </div>
+
+          <div class="legend">
+            <span><i style="background:#F3E4E8;border:1px solid #E0BFCA"></i> 분홍 = 확인된 팩트</span>
+            <span><i style="background:#F6EFE0;border:1px solid #E0CFA6"></i> 노랑 = 물어볼 것</span>
+            <span><i style="background:#FCEBEB;border:1px solid #F09595"></i> 빨강 = 위험 신호</span>
+            <span><i style="background:#FBF0E8;border:1px solid #F3C7A8"></i> 살구 = 내 경험 카드</span>
+            <span><i style="background:#6B2B45"></i> 자주 = 정의하고 나갈 것</span>
+          </div>
+        </section>
+      </div>
+      <div class="sheet" data-sheet="1-2" data-title="1. 시장 · 경쟁 구도">
+        <section>
+          <div class="eyebrow">00:20 – 00:40</div>
+          <h2>시장은 크다. 그런데 대기업이 이미 있다.</h2>
+          <p class="lede">시장 자체는 확실합니다. 문제는 <b>혼자가 아니라는 것</b>입니다. 대표님이 이 지형을 정확히 봐야 합니다.</p>
+
+          <div class="card fact">
+            <p><strong>시장은 진짜입니다.</strong> 초고령사회 진입으로 케어푸드 시장이 <b>2조 원대</b>로 추정됩니다. 삼킴장애(연하곤란)는 고령층·암환자·만성질환자에게 흔하고, 삼킴 기능이 떨어지면 영양 섭취가 어려워 치료 지속조차 힘들어집니다. <b>“먹는 즐거움”은 실제 의료·삶의 질 문제입니다.</b></p>
+          </div>
+
+          <div class="card fact">
+            <p><strong>용어부터 — 대표님이 하는 건 “연하식”입니다.</strong></p>
+            <p style="margin-bottom:0">· <b>연화식(軟化食)</b> — 씹기(저작) 어려운 사람을 위해 <b>부드럽게</b> 만든 음식<br>
+               · <b>연하식(嚥下食)</b> — 삼키기(연하)가 어려운 사람을 위해 <b>점도·경도를 조절</b>한 음식<br>
+               예로원은 연하식이고, <b>거기에 “원래 모양을 복원한다”는 심미성</b>을 더한 것이 차별점입니다.</p>
+          </div>
+
+          <div class="card risk">
+            <p><strong>⚠ 이미 대기업이 들어와 있습니다.</strong></p>
+            <p style="margin-bottom:0">· <b>신세계푸드</b> — 케어푸드 브랜드 ‘이지밸런스’로 <b>연하식 무스 5종</b>(소불고기·닭고기·가자미·동파육·애호박) 출시. B2B(요양원·병원) 먼저, B2C 확대 방침<br>
+               · <b>아워홈·현대그린푸드·풀무원</b> 등도 케어푸드 진출<br>
+               · 정부(농기평·식품클러스터진흥원)도 고령친화식품 R&amp;D·인프라 지원 중</p>
+          </div>
+
+          <div class="card fact">
+            <p><strong>그런데 — 그들이 안 하는 것이 예로원의 자리입니다.</strong></p>
+            <p>대기업 연하식은 대부분 <b>“무스”</b>입니다. 부드럽게 갈아 틀에 굳힌 것. <b>“원래 음식의 형태를 그대로 복원”</b>하는 건 아직 대기업이 대량으로 못 합니다. 3D 푸드프린팅·정밀 몰드가 필요하니까요.</p>
+            <p style="margin-bottom:0"><b>즉 예로원의 해자는 “연하식”이 아니라 “복원(심미성)”입니다.</b> 이걸 헷갈리면 대기업과 정면충돌합니다.</p>
+          </div>
+
+          <div class="card ask">
+            <p style="font-family:var(--serif);font-size:17px;margin-bottom:10px"><strong>“신세계 이지밸런스랑 뭐가 다릅니까?”</strong></p>
+            <p style="margin-bottom:0">이 질문에 <b>한 문장으로 답이 안 나오면</b>, 그게 오늘 정의할 1순위입니다. “무스 말고 모양을 살린다”가 소비자에게 <b>돈을 더 낼 이유가 되는지</b>가 핵심입니다.</p>
+            <div style="margin-top:10px"><span class="lbl">대표님 답 / 반응</span><div class="field big" data-k="mk_react" data-ph=""></div></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="1-3" data-title="2. 제품인가 기기인가 ★">
+        <section>
+          <div class="eyebrow">00:40 – 01:00 · 오늘 가장 중요한 구분</div>
+          <h2>무엇을 파는 회사인가</h2>
+          <p class="lede">3D 프린팅 + 실리콘 몰드로 만든다 — 그런데 <b>파는 게 “완성된 음식”인지 “만드는 도구”인지</b>가 회사의 정체성을 가릅니다. 극초기엔 이걸 자주 헷갈립니다.</p>
+
+          <div class="card">
+            <table>
+              <thead><tr><th style="width:120px">무엇을 파나</th><th style="width:150px">고객</th><th>성격</th></tr></thead>
+              <tbody>
+                <tr><td><b>완제품 연하식</b></td><td>요양원·병원·가정</td><td>식품 제조·유통업. 재고·유통기한·콜드체인. <b>대기업과 경쟁</b></td></tr>
+                <tr><td><b>3D 푸드프린터 (기기)</b></td><td>요양원·병원 주방, 급식업체</td><td>장비 판매·렌탈. 하드웨어 스타트업. 매출 크지만 개발·AS 부담</td></tr>
+                <tr><td><b>실리콘 몰드 (소모품)</b></td><td>급식·조리 현장</td><td>가장 가벼움. 재구매 발생. 단 진입장벽 낮음</td></tr>
+                <tr><td><b>솔루션 (기기+레시피+운영)</b></td><td>요양원·병원 통째로</td><td>B2B 구독. 록인 강하지만 영업 사이클 긺</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card fact">
+            <p><strong>이건 “원료가 IP”였던 종자 회사와 정반대 구조입니다.</strong> 예로원의 경쟁력은 원료가 아니라 <b>“형태를 복원하는 기술”</b>입니다. 그럼 그 기술이 <b>몰드에 있습니까, 프린터에 있습니까, 레시피(재료 배합)에 있습니까?</b> 셋 중 어디에 진짜 노하우가 있는지가 곧 파는 물건입니다.</p>
+          </div>
+
+          <div class="card ask">
+            <p style="font-family:var(--serif);font-size:17px;margin-bottom:10px"><strong>“음식을 파실 거예요, 아니면 음식 만드는 법을 파실 거예요?”</strong></p>
+            <p style="margin-bottom:0">· 음식을 판다 → <b>식품 회사.</b> 허가·위생·유통기한·콜드체인. 신세계와 같은 링<br>
+               · 기술을 판다 → <b>푸드테크 회사.</b> 몰드·프린터·레시피 IP. 대기업에 <b>납품·라이선스</b> 가능</p>
+            <div style="margin-top:10px"><span class="lbl">대표님 답</span><div class="field big" data-k="pd_answer" data-ph=""></div></div>
+          </div>
+
+          <div class="card">
+            <span class="lbl">진짜 노하우가 어디에 있나</span>
+            <div class="field big" data-k="pd_moat" data-ph="몰드 설계 / 프린터 / 재료 배합(점도·경도 조절) / 복원 디자인 데이터"></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="1-4" data-title="⚠ 규제 · 인증">
+        <section>
+          <div class="eyebrow">가장 급한 것 · 극초기일수록</div>
+          <h2>연하식은 규제 산업입니다</h2>
+          <p class="lede">이건 콘텐츠나 브랜드 문제가 아니라 <b>“팔 수 있느냐”의 문제</b>입니다. 극초기에 이걸 모르면 6개월을 헛씁니다.</p>
+
+          <div class="card risk" style="border-width:2px">
+            <p><strong>먹는 것 + 아픈 사람 + 병원 = 규제가 3중으로 걸립니다.</strong></p>
+            <p style="margin-bottom:0">· <b>식품 유형 분류</b> — 일반식품인지, <b>특수의료용도식품</b>인지. 후자면 규제가 훨씬 셈<br>
+               · <b>고령친화우수식품 지정</b> — 점도·경도 등 물성 기준 충족 여부 (연하식은 특히 삼킴 안전이 핵심)<br>
+               · <b>제조 허가·HACCP</b> — 직접 만들면 시설·허가 필요<br>
+               · <b>병원·요양원 납품</b> — 기관마다 요구 서류·인증이 다름</p>
+          </div>
+
+          <div class="card ask">
+            <p style="font-family:var(--serif);font-size:17px;margin-bottom:10px"><strong>“이거, 삼키다가 사고 나면 누구 책임입니까?”</strong></p>
+            <p style="margin-bottom:0">연하식은 <b>잘못 삼키면 흡인성 폐렴·질식</b> 위험이 있습니다. 그래서 물성(점도·경도) 기준이 엄격해요. 대표님이 <b>이 안전 기준을 검증했는지</b>가 투자·납품의 전제조건입니다. “모양 복원”에 집중하다 <b>안전을 놓치면 사업 자체가 불가능</b>합니다.</p>
+            <div style="margin-top:10px"><span class="lbl">현재 인증·검증 상태</span><div class="field big" data-k="rg_status" data-ph="식품 유형 / 물성 검증 / 임상·현장 테스트 / 자문받는 전문가"></div></div>
+          </div>
+
+          <div class="card">
+            <p style="margin-bottom:0"><strong>※ 정확한 규제 판단은 식품 인허가 전문가(식품안전 컨설팅·변리사·식약처 상담)의 몫입니다.</strong> 여기서는 “무엇을 확인해야 하는지”를 짚는 것이 목적입니다. <b>이게 숙제 1번이 됩니다.</b></p>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="1-5" data-title="3. 진단 질문">
+        <section>
+          <div class="eyebrow">01:00 – 01:35 · 듣는 시간</div>
+          <h2>진단 질문</h2>
+          <p class="lede">극초기 기업은 조언보다 질문이 먼저입니다. 대표님이 아직 안 정한 것을 드러내는 게 목적입니다. ★는 오늘 반드시 답을 받아야 하는 질문.</p>
+          <div class="card">
+            <div class="eyebrow" style="color:var(--muted)">A · 정체성 · 제품</div>
+            <div id="grpA"></div>
+            <button class="addq" data-grp="A">+ 질문 추가</button>
+          </div>
+          <div class="card">
+            <div class="eyebrow" style="color:var(--muted)">B · 고객 · 검증</div>
+            <div id="grpB"></div>
+            <button class="addq" data-grp="B">+ 질문 추가</button>
+          </div>
+          <div class="card">
+            <div class="eyebrow" style="color:var(--muted)">C · 자금 · 팀 · 시드</div>
+            <div id="grpC"></div>
+            <button class="addq" data-grp="C">+ 질문 추가</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="1-6" data-title="4. 숙제 내주기">
+        <section>
+          <div class="eyebrow">01:35 – 01:50</div>
+          <h2>숙제 — 시드 준비를 위해 해와야 할 것</h2>
+          <p class="lede">시드 투자는 이 4가지가 없으면 못 받습니다. <b>“다각화 전략”이 아니라 “첫 고객과 안전”이 시드의 조건</b>입니다.</p>
+          <div class="card">
+            <div class="hw"><input type="checkbox" data-c="h1"><div>
+              <b>1. ★ 규제·물성 기준 확인 — 이번 주</b>
+              <small>식품 유형 분류(일반/특수의료용도), 연하식 물성(점도·경도) 안전 기준. 식약처 상담 또는 식품인허가 전문가. <b>이게 안 되면 못 팝니다.</b></small>
+            </div></div>
+            <div class="hw"><input type="checkbox" data-c="h2"><div>
+              <b>2. 유료 파일럿 1곳 — 요양원 또는 병원</b>
+              <small>공짜 시식 말고 <b>돈을 내거나 정식으로 도입하겠다는 곳 한 곳.</b> 시드에서 투자자가 가장 먼저 묻는 것 = “누가 샀나요?”</small>
+            </div></div>
+            <div class="hw"><input type="checkbox" data-c="h3"><div>
+              <b>3. 원가표 한 장</b>
+              <small>1인분을 만드는 데 드는 재료·프린팅·인건비·포장. <b>대기업 무스보다 비쌀 텐데, 그 값을 낼 이유가 있는가.</b></small>
+            </div></div>
+            <div class="hw"><input type="checkbox" data-c="h4"><div>
+              <b>4. 경쟁 제품 실물 비교</b>
+              <small>신세계 이지밸런스 등을 실제로 사서 먹어보고, 예로원과 나란히 놓기. <b>“모양 복원”이 정말 다른지 눈으로 확인.</b></small>
+            </div></div>
+            <div style="margin-top:6px">
+              <span class="lbl">숙제 마감 / 다음 세션 일정</span>
+              <div class="field one line" data-k="hw_due" data-ph="4주 뒤 · 온라인 60분"></div>
+            </div>
+          </div>
+          <section class="closing">
+            <div class="eyebrow">세션을 닫기 전에</div>
+            <p class="quote" style="font-size:15px">‘오늘 정의할 3가지’로 돌아가 <b>3/3</b>인지 확인하세요. 비어 있다면 그게 오늘 대표님이 답하지 못한 것이고, 그 자체가 결론입니다.</p>
+            <p class="quote">“기술은 멋있어요. 그런데 오늘 정할 건 하나예요 —<br><b>음식을 파실 거예요, 음식 만드는 법을 파실 거예요?</b><br>그리고 그걸 <b>돈 내고 살 첫 한 명</b>은 누구입니까.”</p>
+          </section>
+        </section>
+      </div>
+      <div class="sheet" data-sheet="1-7" data-title="◈ 내 경험 카드" data-mine="1">
+        <section>
+          <div class="eyebrow">멘토 전용 · 세션 중 참고</div>
+          <h2>내 경험 카드 — 어느 대목에서 무슨 이야기를</h2>
+          <p class="lede"><b>성공담이 아니라 후회담으로.</b> 아카이빗·공공의주방에서 겪은 것을 “저는 이걸 몰라서 몇 년을 썼어요”로 꺼내면 방어하지 않고 듣습니다. 2~3개만 쓰세요.</p>
+
+          <div class="card story">
+            <div class="when">제품인가 기기인가 — 정할 때</div>
+            <h3>① “밀키트가 아니다”를 정의하느라 10년</h3>
+            <p>저도 “우리가 뭘 파는 회사인가”로 오래 씨름했습니다. 밀키트냐 쿠킹박스냐, 제품이냐 콘텐츠냐. 결국 <b>“클래스에서 증명하고 박스로 판다”</b>로 정리하고서야 회사가 섰습니다.</p>
+            <div class="say">“대표님도 지금 똑같아요. 음식 파는 회사인지, 기술 파는 회사인지.<br><b>남과 뭐가 다른지 말고 — 뭘 파는지</b> 한 문장으로 말해보세요.”</div>
+          </div>
+
+          <div class="card story">
+            <div class="when">규제·안전 — 얘기할 때</div>
+            <h3>② 식품은 “만드는 것”과 “파는 것”이 다르다</h3>
+            <p>즉석제조가공 허가, HACCP, 유통기한 설정, 표시사항… 저는 이걸 몰라서 시행착오를 겪었습니다. <b>맛있게 만드는 것과 합법적으로 파는 것은 완전히 다른 일</b>이에요.</p>
+            <div class="say">“대표님, 삼킴장애용이면 <b>사고 나면 사람이 다쳐요.</b> 저보다 훨씬 규제가 셉니다.<br>기술 자랑 전에, <b>이거 팔아도 되는 물건인지</b>부터 확인하세요.”</div>
+          </div>
+
+          <div class="card story" style="border-width:2px;border-color:#C25E7A">
+            <div class="when">★ 첫 고객 · 시드 얘기할 때 — 오늘의 정점</div>
+            <h3>③ 수상은 매출이 아니다</h3>
+            <p>저는 iF 디자인 어워드, 소비자대상 2년 연속, 국회 표창 두 번, 시리즈A 투자까지 받았습니다. <b>그런데 그 어느 것도 매출을 만들어주지 않았어요.</b></p>
+            <div class="say">“대표님, 극초기엔 자꾸 상이나 지원사업으로 채우고 싶어져요.<br><b>근데 투자자는 그거 안 봐요. ‘누가 돈 내고 샀냐’를 봅니다.</b><br>파일럿 한 곳, 그게 상 열 개보다 셉니다.”</div>
+          </div>
+
+          <div class="card story">
+            <div class="when">수익 다각화 얘기가 나올 때</div>
+            <h3>④ 나는 너무 많이 벌였다</h3>
+            <p>쿠킹박스·클래스·케이터링·콘텐츠·카페까지 — 저는 사업을 너무 많이 벌였습니다. 소수 인원으로 다 하려니 <b>하나도 깊이 못 판 시기</b>가 있었어요.</p>
+            <div class="say">“대표님이 ‘온라인 강의로 수익 다각화’를 물으셨는데 —<br><b>아직 본 제품도 안 팔렸잖아요.</b> 다각화는 하나가 되고 나서예요.<br>지금 여럿 벌이면, 저처럼 다 얕아집니다.”</div>
+          </div>
+
+          <div class="card story">
+            <div class="when">마무리 · 실질적으로 줄 수 있는 것</div>
+            <h3>⑤ 케어푸드·B2B·MYSC 연결</h3>
+            <p>공공의주방 시리즈A를 이끈 곳이 <b>MYSC(임팩트 투자)</b>입니다. 예로원 스토리는 임팩트 투자와 정확히 맞습니다 — <b>고령화·환자 삶의 질·먹는 존엄.</b> 그리고 저는 요양원·기관 케이터링과 B2B 납품 경험이 있습니다.</p>
+            <div style="margin-top:10px"><span class="lbl">연결하기로 한 사람 / 보내주기로 한 것</span><div class="field one" data-k="st5" data-ph=""></div></div>
+          </div>
+
+          <div class="card ask">
+            <p style="margin-bottom:0"><strong>주의.</strong> 이야기는 <b>2~3개만</b>. 여섯 개 다 하면 상미님 이야기 듣는 자리가 됩니다. 오늘 주인공은 예로원 대표입니다.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="2">
+      <div class="sheet on" data-sheet="2-1" data-title="★ 2단계 정의 2가지" data-star="1">
+        <section>
+          <div class="eyebrow">2단계 · 4주 뒤 · 목적지</div>
+          <h2>2단계에서 정의할 2가지</h2>
+          <p class="lede">숙제 4개가 안 오면 이 세션은 열지 마세요. 특히 규제·물성 확인이 안 됐으면 나머지는 의미 없습니다.</p>
+          <div class="define">
+            <div class="dh">정의하고 나갈 것</div>
+            <div class="row">
+              <input type="checkbox" data-c="d4" aria-label="정의 4">
+              <div class="dq"><b>4. 규제 통과 경로 — 무엇으로 분류되고, 무엇을 인증받는가</b>
+                <div class="field one" data-k="def4" data-ph="식품 유형 / 물성 기준 / 필요한 허가·인증과 순서"></div></div>
+            </div>
+            <div class="row">
+              <input type="checkbox" data-c="d5" aria-label="정의 5">
+              <div class="dq"><b>5. 첫 고객 검증 — 돈 내겠다는 곳이 나왔는가</b>
+                <div class="field one" data-k="def5" data-ph="유료 파일럿 / LOI / 재구매 의사"></div></div>
+            </div>
+            <div class="bar"><div id="bar2"></div></div>
+            <div class="barnote"><span>숙제를 해와야 시작할 수 있습니다</span><span id="bn2">0/2</span></div>
+          </div>
+          <div class="card">
+            <span class="lbl">이 2가지를 정하려면</span>
+            <div class="path">
+              <button data-go="2-2"><b>1. 숙제 점검</b><small>안 해왔으면 진도 나가지 말 것</small></button>
+              <button data-go="2-3"><b>2. 기술·안전 자산 진단</b><small>복원 기술이 정말 남과 다른가</small></button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="2-2" data-title="1. 숙제 점검">
+        <section>
+          <div class="eyebrow">2단계</div>
+          <h2>숙제 점검</h2>
+          <p class="lede">진도를 나가는 척하는 게 가장 나쁩니다. 안 해왔으면 미루세요.</p>
+          <div class="card">
+            <div class="grid2">
+              <div><span class="lbl">1. 규제·물성 기준 — 확인됐나?</span><div class="field big" data-k="s2_h1" data-ph=""></div></div>
+              <div><span class="lbl">2. 유료 파일럿 1곳 — 나왔나?</span><div class="field big" data-k="s2_h2" data-ph=""></div></div>
+            </div>
+            <div class="grid2" style="margin-top:12px">
+              <div><span class="lbl">3. 원가표</span><div class="field big" data-k="s2_h3" data-ph=""></div></div>
+              <div><span class="lbl">4. 경쟁 제품 실물 비교</span><div class="field big" data-k="s2_h4" data-ph=""></div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="2-3" data-title="2. 기술·안전 자산 진단">
+        <section>
+          <div class="eyebrow">2단계</div>
+          <h2>기술·안전 자산 — 무엇을 갖고 있는가</h2>
+          <div class="card ask">
+            <p style="margin-bottom:0"><strong>핵심.</strong> “원래 모양을 복원한다”는 게 <b>정말 남이 못 하는 기술인지</b>, 아니면 몰드만 있으면 누구나 하는지. 여기서 회사 가치가 갈립니다.</p>
+          </div>
+          <div class="card">
+            <table>
+              <thead><tr><th style="width:150px">항목</th><th>현재 상태</th></tr></thead>
+              <tbody>
+                <tr><td><b>복원 기술</b></td><td><div class="field" data-k="t_tech" data-ph="몰드 설계 / 프린터 / 재료 배합 — 어디에 노하우가"></div></td></tr>
+                <tr><td><b>물성·안전 검증</b></td><td><div class="field" data-k="t_safe" data-ph="점도·경도 / 삼킴 안전 테스트 / 임상·현장"></div></td></tr>
+                <tr><td><b>특허·디자인권</b></td><td><div class="field" data-k="t_ip" data-ph="출원 여부 / 복원 디자인 데이터 소유"></div></td></tr>
+                <tr><td><b>레시피·메뉴</b></td><td><div class="field" data-k="t_menu" data-ph="몇 종 / 재현성"></div></td></tr>
+                <tr><td><b>생산 방식</b></td><td><div class="field" data-k="t_prod" data-ph="직접 제조 / OEM / 기기 납품"></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="3">
+      <div class="sheet on" data-sheet="3-1" data-title="★ 3단계 정의 2가지" data-star="1">
+        <section>
+          <div class="eyebrow">3단계 · 8~12주 · 목적지</div>
+          <h2>3단계에서 정의할 2가지</h2>
+          <p class="lede">1·2단계(제품·고객·규제)가 서고 나서야 수익 모델과 시드가 나옵니다. 순서를 지키세요.</p>
+          <div class="define">
+            <div class="dh">정의하고 나갈 것</div>
+            <div class="row">
+              <input type="checkbox" data-c="d6" aria-label="정의 6">
+              <div class="dq"><b>6. 수익 모델 — 무엇으로 돈을 버는가 (다각화는 그 다음)</b>
+                <div class="field one" data-k="def6" data-ph="완제품 / 기기 렌탈 / 구독 / 라이선스 — 주력 하나 + 보조"></div></div>
+            </div>
+            <div class="row">
+              <input type="checkbox" data-c="d7" aria-label="정의 7">
+              <div class="dq"><b>7. 시드 스토리 — 무엇을 증명했고, 그 돈으로 뭘 할 것인가</b>
+                <div class="field one" data-k="def7" data-ph="검증 지표 / 자금 사용처 / 목표 금액"></div></div>
+            </div>
+            <div class="bar"><div id="bar3"></div></div>
+            <div class="barnote"><span>1·2단계가 끝나야 나옵니다</span><span id="bn3">0/2</span></div>
+          </div>
+          <div class="card">
+            <span class="lbl">이 2가지를 정하려면</span>
+            <div class="path">
+              <button data-go="3-2"><b>1. 수익 모델 · 다각화</b><small>주력 먼저, 다각화는 나중</small></button>
+              <button data-go="3-3"><b>2. 시드 준비 · IR</b><small>극초기의 IR은 “증거”가 전부</small></button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="3-2" data-title="1. 수익 모델 · 다각화">
+        <section>
+          <div class="eyebrow">3단계</div>
+          <h2>수익 모델 — 주력 먼저, 다각화는 나중</h2>
+          <div class="card ask">
+            <p style="margin-bottom:0"><strong>대표님이 처음에 물은 “온라인 강의·수익 다각화”는 여기서 다룹니다.</strong> 다만 순서가 있습니다 — <b>주력 하나로 매출이 나기 시작한 뒤에</b> 다각화입니다. 지금 여럿 벌이면 다 얕아집니다.</p>
+          </div>
+          <div class="card">
+            <table>
+              <thead><tr><th style="width:130px">모델</th><th style="width:200px">설명</th><th>우선순위</th></tr></thead>
+              <tbody>
+                <tr><td><b>완제품 판매</b></td><td>요양원·병원·가정에 연하식 납품</td><td><div class="field" data-k="rm1" data-ph=""></div></td></tr>
+                <tr><td><b>기기·몰드</b></td><td>3D 프린터·몰드 판매/렌탈</td><td><div class="field" data-k="rm2" data-ph=""></div></td></tr>
+                <tr><td><b>구독·솔루션</b></td><td>기관에 기기+레시피+운영 패키지</td><td><div class="field" data-k="rm3" data-ph=""></div></td></tr>
+                <tr><td><b>교육·콘텐츠</b></td><td>온라인 강의, 조리사 교육 <span style="color:var(--muted)">(다각화·후순위)</span></td><td><div class="field" data-k="rm4" data-ph=""></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="3-3" data-title="2. 시드 준비 · IR">
+        <section>
+          <div class="eyebrow">3단계</div>
+          <h2>시드 준비 · IR</h2>
+          <div class="card fact">
+            <p style="margin-bottom:0"><strong>극초기 시드 IR은 “비전”이 아니라 “증거”입니다.</strong> 투자자가 보는 순서: ① 진짜 문제인가(삼킴장애=예) ② 이 팀이 풀 수 있나 ③ <b>누가 돈 내고 샀나</b> ④ 규제 뚫었나 ⑤ 얼마나 커지나. 3·4번이 비면 시드가 안 나옵니다.</p>
+          </div>
+          <div class="card">
+            <table>
+              <thead><tr><th style="width:70px">단계</th><th style="width:250px">목표</th><th>현재</th></tr></thead>
+              <tbody>
+                <tr><td><b>3개월</b></td><td>규제 경로 확정 + 유료 파일럿 1곳</td><td><div class="field" data-k="ir1" data-ph=""></div></td></tr>
+                <tr><td><b>6개월</b></td><td>파일럿 3곳 + 재구매 데이터 + 시드 클로징</td><td><div class="field" data-k="ir2" data-ph=""></div></td></tr>
+                <tr><td><b>12개월</b></td><td>납품처 확대 + 주력 모델 매출 증명</td><td><div class="field" data-k="ir3" data-ph=""></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card fact">
+            <p style="margin-bottom:0"><strong>임팩트 투자 각도.</strong> 예로원은 <b>고령화·환자 삶의 질·먹는 존엄</b>이라는 임팩트 스토리가 강합니다. MYSC 같은 임팩트 투자사와 결이 맞습니다. 단, 임팩트도 <b>“누가 샀나”</b>를 먼저 봅니다.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="4">
+      <div class="sheet on" data-sheet="4-1" data-title="협업 · 후속">
+        <section>
+          <div class="eyebrow">부록</div>
+          <h2>협업 · 후속</h2>
+          <div class="card">
+            <div class="grid2">
+              <div><span class="lbl">아카이빗 · 공공의주방과의 접점</span>
+                <div class="field big" data-k="fu_collab" data-ph="· 요양원·기관 B2B 납품 경험 공유&#10;· 케이터링·급식 채널 연결&#10;· 상세페이지·자사몰·패킹·콜드체인 노하우&#10;· 임팩트 투자(MYSC) 소개"></div></div>
+              <div><span class="lbl">내가 보내주기로 한 것 / 연결해주기로 한 사람</span>
+                <div class="field big" data-k="fu_todo" data-ph=""></div></div>
+            </div>
+            <div style="margin-top:12px">
+              <span class="lbl">자유 메모</span>
+              <div class="field big" data-k="fu_free" data-ph=""></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="sheet" data-sheet="4-2" data-title="자료 출처">
+        <section>
+          <div class="eyebrow">부록</div>
+          <h2>자료 출처</h2>
+          <div class="card">
+            <p>· 아시아경제 — 신세계푸드 ‘이지밸런스’ 연하식 5종, 케어푸드 시장 2조원대 (연화식/연하식 구분)</p>
+            <p>· 전국인력신문 · 코메디닷컴 · 클리닉저널 — 3D 푸드프린팅 삼킴장애 식품 (2026)</p>
+            <p>· 한국식품산업클러스터진흥원 고령친화산업지원센터 · 농기평 — 고령친화식품 R&amp;D·지정</p>
+            <p>· 한국농촌경제연구원(KREI) — 3D 푸드프린팅 시장 규모·푸드테크 실태</p>
+            <p style="margin-bottom:0">· 이투데이 — 개인 맞춤 식이설계 (2025)</p>
+          </div>
+          <div class="card">
+            <p style="margin-bottom:0;font-size:13px;color:var(--muted)"><b>※ 이 워크시트의 규제·물성 관련 내용은 방향 제시용이며 법적 판단이 아닙니다.</b> 정확한 인허가는 식약처·식품인허가 전문가 확인이 필요합니다.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </main>
+</div>
+<script>
+(function(){
+  const KEY='yerowon-mentoring-v1';
+  const state={checks:{}};
+  const extras={A:[],B:[],C:[]};
+
+  const QUESTIONS={
+    A:[
+      {k:'a1',key:true,t:'예로원은 음식을 파는 회사입니까, 음식 만드는 기술(기기·몰드)을 파는 회사입니까?',s:'식품 회사냐 푸드테크 회사냐'},
+      {k:'a2',key:true,t:'“원래 모양을 복원한다” — 이게 남이 못 하는 기술입니까, 몰드만 있으면 되는 겁니까?',s:'진짜 노하우가 몰드/프린터/재료 중 어디에'},
+      {k:'a3',key:true,t:'신세계 이지밸런스(무스)랑 뭐가 다릅니까? 한 문장으로.',s:'“모양 복원”이 돈을 더 낼 이유가 되는가'},
+      {k:'a4',key:false,t:'직접 만드실 겁니까, 만드는 걸 남에게 파실 겁니까?',s:''}
+    ],
+    B:[
+      {k:'b1',key:true,t:'지금까지 예로원에 돈을 내고 뭔가 산 사람/기관이 한 곳이라도 있나요?',s:'공짜 시식 말고 유료. 누가, 무엇을, 왜'},
+      {k:'b2',key:true,t:'첫 고객은 병원입니까, 요양원입니까, 가정입니까?',s:'셋은 완전히 다른 사업. 영업·규제·단가가 다름'},
+      {k:'b3',key:true,t:'삼키다가 사고 나면 누구 책임입니까? 물성(점도·경도) 안전은 검증했나요?',s:'연하식은 흡인성 폐렴·질식 위험. 안전이 전제조건'},
+      {k:'b4',key:false,t:'이 음식, 어르신/환자가 실제로 “맛있다, 또 먹고 싶다” 했나요?',s:'모양만 살고 맛이 없으면 재구매가 없음'}
+    ],
+    C:[
+      {k:'c1',key:true,t:'지금 자금은 어디서 나옵니까? 언제까지 버팁니까?',s:'정부지원금/자본금/매출 — 런웨이'},
+      {k:'c2',key:true,t:'팀은 몇 명이고, 식품/의료/규제 전문가가 있나요?',s:'대표님이 “푸드 비전문가”라 하셨으니 그 공백을 누가 메우나'},
+      {k:'c3',key:true,t:'시드로 얼마를 받아서, 정확히 무엇에 쓸 겁니까?',s:'“운영비”는 답이 아님. 규제통과/파일럿확대/생산 중 무엇'},
+      {k:'c4',key:false,t:'“수익 다각화(온라인 강의 등)” — 본 제품이 팔리기 전에 왜 그게 필요한가요?',s:'다각화는 주력이 선 다음. 지금은 첫 고객이 먼저'}
+    ]
+  };
+
+  function qBlock(q,custom){
+    const w=document.createElement('div'); w.style.marginBottom='14px';
+    const num=custom?'+':q.k.toUpperCase();
+    w.innerHTML='<div class="q'+(q.key?' key':'')+'"><div class="qn">'+num+'</div><div class="qt">'
+      +(custom?'<div class="field one" data-k="'+q.k+'_q" data-ph="추가 질문"></div>':q.t+(q.s?'<small>'+q.s+'</small>':''))
+      +'</div></div><div class="field" data-k="'+q.k+'" data-ph="대표님 답변 / 메모"></div>';
+    return w;
+  }
+  ['A','B','C'].forEach(g=>{const h=document.getElementById('grp'+g); QUESTIONS[g].forEach(q=>h.appendChild(qBlock(q,false)));});
+
+  function bind(el){
+    if(el.dataset.bound) return; el.dataset.bound='1';
+    el.setAttribute('contenteditable','true'); el.setAttribute('role','textbox');
+    el.addEventListener('input',()=>{state[el.dataset.k]=el.innerText; queueSave(); syncChat();});
+    el.addEventListener('paste',e=>{e.preventDefault();
+      const t=(e.clipboardData||window.clipboardData).getData('text/plain');
+      document.execCommand('insertText',false,t);});
+    if(state[el.dataset.k]) el.innerText=state[el.dataset.k];
+  }
+  function bindAll(){
+    document.querySelectorAll('.field').forEach(bind);
+    document.querySelectorAll('input[type=checkbox][data-c]').forEach(cb=>{
+      if(cb.dataset.bound) return; cb.dataset.bound='1';
+      cb.checked=!!state.checks[cb.dataset.c];
+      cb.addEventListener('change',()=>{state.checks[cb.dataset.c]=cb.checked; queueSave(); tick();});
+    });
+  }
+
+  document.querySelectorAll('.addq').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const g=btn.dataset.grp, id='x_'+g+'_'+Date.now().toString(36);
+      extras[g].push(id);
+      const h=document.getElementById('grp'+g);
+      h.appendChild(qBlock({k:id,key:false},true)); bindAll();
+      h.lastChild.querySelector('.field').focus(); queueSave();
+    });
+  });
+
+  let cur='1';
+  function showSheet(id){
+    const panel=document.querySelector('.panel[data-panel="'+cur+'"]');
+    panel.querySelectorAll('.sheet').forEach(s=>s.classList.toggle('on',s.dataset.sheet===id));
+    buildSubs(); window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function buildSubs(){
+    const box=document.getElementById('subs'); box.innerHTML='';
+    document.querySelectorAll('.panel[data-panel="'+cur+'"] .sheet').forEach(sh=>{
+      const b=document.createElement('button');
+      b.className='sub-tab'+(sh.dataset.star?' star':'')+(sh.dataset.mine?' mine':'')+(sh.classList.contains('on')?' on':'');
+      b.textContent=sh.dataset.title;
+      b.onclick=()=>showSheet(sh.dataset.sheet);
+      box.appendChild(b);
+    });
+  }
+  document.querySelectorAll('.stage-tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      cur=t.dataset.stage;
+      document.querySelectorAll('.stage-tab').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.dataset.panel===cur));
+      const sheets=document.querySelectorAll('.panel[data-panel="'+cur+'"] .sheet');
+      sheets.forEach((s,i)=>s.classList.toggle('on',i===0));
+      buildSubs(); window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-go]'); if(!b) return;
+    const id=b.dataset.go, st=id.split('-')[0];
+    if(st!==cur){
+      cur=st;
+      document.querySelectorAll('.stage-tab').forEach(x=>x.classList.toggle('on',x.dataset.stage===st));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.dataset.panel===st));
+      tick();
+    }
+    showSheet(id);
+  });
+
+  const GROUPS={'1':['d1','d2','d3'],'2':['d4','d5'],'3':['d6','d7']};
+  function tick(){
+    ['1','2','3'].forEach(s=>{
+      const list=GROUPS[s];
+      const done=list.filter(k=>state.checks[k]).length;
+      const p=Math.round(done/list.length*100);
+      const bar=document.getElementById('bar'+s); if(bar) bar.style.width=p+'%';
+      const bn=document.getElementById('bn'+s); if(bn) bn.textContent=done+'/'+list.length;
+      const c=document.getElementById('c'+s); if(c) c.textContent=done+'/'+list.length;
+    });
+  }
+
+  function syncChat(){
+    const a=document.getElementById('btnChat');
+    const raw=(state.chat_url||'').trim();
+    if(/^https?:\/\//i.test(raw)) a.href=raw;
+  }
+
+  const badge=document.getElementById('saveState');
+  let timer=null;
+  function queueSave(){badge.textContent='입력 중…'; clearTimeout(timer); timer=setTimeout(save,700);}
+  async function save(){
+    try{ await window.storage.set(KEY,JSON.stringify({state,extras})); badge.textContent='저장됨 ✓'; }
+    catch(e){ badge.textContent='임시 보관'; }
+  }
+  async function load(){
+    try{
+      const r=await window.storage.get(KEY);
+      if(r&&r.value){
+        const d=JSON.parse(r.value);
+        Object.assign(state,d.state||{});
+        state.checks=state.checks||{};
+        ['A','B','C'].forEach(g=>{
+          ((d.extras&&d.extras[g])||[]).forEach(id=>{
+            extras[g].push(id);
+            document.getElementById('grp'+g).appendChild(qBlock({k:id,key:false},true));
+          });
+        });
+      }
+      badge.textContent='저장됨 ✓';
+    }catch(e){ badge.textContent='새 기록'; state.checks=state.checks||{}; }
+    bindAll(); buildSubs(); tick(); syncChat();
+  }
+
+  document.getElementById('btnExport').addEventListener('click',()=>{
+    const g=k=>(state[k]||'').trim();
+    const ck=k=>state.checks[k]?'[x]':'[ ]';
+    let o='# 예로원 대표 멘토링 기록\n\n';
+    o+='- 일시: '+g('meta_date')+' / '+g('meta_ch')+' / '+g('meta_who')+'\n';
+    o+='- 멘티가 말한 목표: '+g('meta_goal')+'\n\n';
+    o+='## 결론 — 정의한 것\n';
+    o+='### 1단계 · 방향 (오늘)\n';
+    o+=ck('d1')+' 1. 무엇을 파는가 (제품/기기/몰드/솔루션): '+g('def1')+'\n';
+    o+=ck('d2')+' 2. 첫 고객 (병원/요양원/가정): '+g('def2')+'\n';
+    o+=ck('d3')+' 3. 90일 증명 + 시드 준비: '+g('def3')+'\n';
+    o+='### 2단계 · 증명 (4주 뒤)\n';
+    o+=ck('d4')+' 4. 규제 통과 경로: '+g('def4')+'\n';
+    o+=ck('d5')+' 5. 첫 고객 검증: '+g('def5')+'\n';
+    o+='### 3단계 · 실행 (8~12주)\n';
+    o+=ck('d6')+' 6. 수익 모델: '+g('def6')+'\n';
+    o+=ck('d7')+' 7. 시드 스토리: '+g('def7')+'\n\n';
+    o+='## 숙제 (다음 세션 전까지)\n';
+    o+=ck('h1')+' 1. ★ 규제·물성 기준 확인 (이번 주) — 안 되면 못 팜\n';
+    o+=ck('h2')+' 2. 유료 파일럿 1곳 (요양원/병원)\n';
+    o+=ck('h3')+' 3. 원가표 한 장\n';
+    o+=ck('h4')+' 4. 경쟁 제품(신세계 이지밸런스 등) 실물 비교\n';
+    o+='마감: '+g('hw_due')+'\n\n';
+    o+='## 진단 질문 기록\n';
+    ['A','B','C'].forEach(grp=>{
+      o+='\n### '+{A:'A. 정체성·제품',B:'B. 고객·검증',C:'C. 자금·팀·시드'}[grp]+'\n';
+      QUESTIONS[grp].forEach(q=>{o+='\n**Q. '+q.t+'**\n'+g(q.k)+'\n';});
+      extras[grp].forEach(id=>{o+='\n**Q. '+g(id+'_q')+'**\n'+g(id)+'\n';});
+    });
+    o+='\n## 기타 기록\n';
+    o+='- 시장·경쟁 반응: '+g('mk_react')+'\n';
+    o+='- 제품/기기 답: '+g('pd_answer')+'\n';
+    o+='- 진짜 노하우 위치: '+g('pd_moat')+'\n';
+    o+='- 규제·검증 상태: '+g('rg_status')+'\n';
+    o+='- 협업 접점: '+g('fu_collab')+'\n';
+    o+='- 내가 할 일: '+g('fu_todo')+'\n';
+    o+='- MYSC 등 연결: '+g('st5')+'\n';
+    o+='- 자유 메모: '+g('fu_free')+'\n';
+    const b=new Blob([o],{type:'text/markdown;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(b);
+    a.download='멘토링기록_예로원_'+(g('meta_date')||'2026-07-15')+'.md';
+    a.click(); URL.revokeObjectURL(a.href);
+  });
+
+  document.getElementById('btnReset').addEventListener('click',async()=>{
+    if(!confirm('기록을 전부 지웁니다. 되돌릴 수 없습니다. 진행할까요?')) return;
+    Object.keys(state).forEach(k=>delete state[k]);
+    state.checks={};
+    document.querySelectorAll('.field').forEach(f=>f.innerText='');
+    document.querySelectorAll('input[type=checkbox][data-c]').forEach(cb=>cb.checked=false);
+    try{ await window.storage.delete(KEY); }catch(e){}
+    badge.textContent='새 기록'; tick();
+  });
+
+  load();
+})();
+</script>
