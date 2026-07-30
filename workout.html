@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="version" content="v5">
+<meta name="version" content="v9">
 <meta name="updated" content="2026.07.30 00:00">
 <title>운동 홈</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,9 +71,16 @@
   }
   .card-body{flex:1; min-width:0}
   .c-name{margin:0; font-size:16px; font-weight:600; line-height:1.4}
+  .c-name .badge{margin-left:8px; font-weight:400; vertical-align:2px}
   .c-meta{margin:5px 0 0; font-size:13px; color:var(--mute)}
   .c-meta .time{font-family:var(--mono); color:var(--ink)}
   .c-meta .time.na{color:var(--mute)}
+  .badge{
+    display:inline-block; padding:2px 9px; border-radius:999px;
+    background:#F1EFE9; color:#6B6256;
+    font-size:12px; line-height:1.6; vertical-align:1px;
+  }
+  .badge.wait{background:transparent; border:1px dashed var(--line); color:var(--mute)}
   .c-note{margin:8px 0 0; font-size:13px; color:#5A5147}
   .go{
     flex:0 0 auto; align-self:center;
@@ -148,16 +155,16 @@
   <!-- (2)(3)(4)(5) -->
   <p class="h-theme">테마 홈 · 운동</p>
   <h1>운동 홈</h1>
-  <p class="h-ver">업데이트 2026.07.30 · v5</p>
+  <p class="h-ver">업데이트 2026.07.30 · v9</p>
   <p class="h-desc">자주 하는 운동을 부위별로 모아 바로 엽니다.</p>
 
   <hr class="rule">
 
-  <!-- ── 부위별 ── -->
+  <!-- ── 분류별 ── -->
   <section>
     <div class="sec-head">
       <h2>부위별</h2>
-      <span class="count">3건</span>
+      <span class="count">7건 · 합 84분</span>
     </div>
 
     <div class="group">
@@ -165,10 +172,8 @@
 
       <div class="card">
         <div class="card-body">
-          <p class="c-name">전신 스트레칭 이거 하나로 끝!</p>
-          <p class="c-meta">
-            땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">17분</span>
-          </p>
+          <p class="c-name">전신 스트레칭 이거 하나로 끝! <span class="badge wait">자세 미확인</span></p>
+          <p class="c-meta">땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">17분</span></p>
           <p class="c-note">
             하체비만 · 상체비만 · 골반교정 · 승모근 · 종아리알 &nbsp;/&nbsp;
             매일 하는 만능 스트레칭 루틴
@@ -176,6 +181,7 @@
         </div>
         <a class="go" href="https://www.youtube.com/watch?v=nOGT4lXlSHw" target="_blank" rel="noopener">▶ 바로 열기</a>
       </div>
+
     </div>
 
     <div class="group">
@@ -183,16 +189,60 @@
 
       <div class="card">
         <div class="card-body">
-          <p class="c-name">집에서 칼로리 불태우는 걷기 유산소운동</p>
-          <p class="c-meta">
-            땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">30분</span>
-          </p>
+          <p class="c-name">집에서 칼로리 불태우는 걷기 유산소운동 <span class="badge">🧍 서서</span></p>
+          <p class="c-meta">땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">30분</span></p>
           <p class="c-note">
             칼소폭 순한맛 &nbsp;/&nbsp; 제자리 걷기, 층간소음 · 점프 부담 적은 쪽
           </p>
         </div>
         <a class="go" href="https://www.youtube.com/watch?v=t70t-sklypk" target="_blank" rel="noopener">▶ 바로 열기</a>
       </div>
+
+    </div>
+
+    <div class="group">
+      <span class="group-name">복부 · 옆구리</span>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="c-name">무조건 뱃살 빠지는 운동 베스트5 <span class="badge">🧍 서서</span></p>
+          <p class="c-meta">땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">12분</span></p>
+          <p class="c-note">
+            스탠딩 바이시클 → 크로스오버 토터치 → 사이드 레그레이즈 →
+            토터치 킥 → 밸리 폭탄, 각 30초씩 3세트
+          </p>
+        </div>
+        <a class="go" href="https://www.youtube.com/watch?v=iOSYLKBk894" target="_blank" rel="noopener">▶ 바로 열기</a>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="c-name">하루 7분! 허리둘레 5cm 줄어드는 운동 <span class="badge">🧍 서서</span></p>
+          <p class="c-meta">땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">8분</span></p>
+          <p class="c-note">
+            슬라이드 터치 → 롤리 폴리 → 사이드 밤 → 와이드 서클 → 튜브 밤,
+            마무리 쿨다운 스트레칭
+          </p>
+        </div>
+        <a class="go" href="https://www.youtube.com/watch?v=1uJV1ZmzeoI" target="_blank" rel="noopener">▶ 바로 열기</a>
+      </div>
+
+    </div>
+
+    <div class="group">
+      <span class="group-name">허벅지</span>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="c-name">허벅지 안쪽살 빨리 빼는 운동 3가지 <span class="badge">🛌 누워서</span></p>
+          <p class="c-meta">땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">6분</span></p>
+          <p class="c-note">
+            시저스 크로스 → 레그 드롭스 → 라잉 어덕터
+          </p>
+        </div>
+        <a class="go" href="https://www.youtube.com/watch?v=Q70jQVPkMnc" target="_blank" rel="noopener">▶ 바로 열기</a>
+      </div>
+
     </div>
 
     <div class="group">
@@ -200,10 +250,8 @@
 
       <div class="card">
         <div class="card-body">
-          <p class="c-name">예쁜 일자어깨 승모근 스트레칭 BEST3</p>
-          <p class="c-meta">
-            땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">6분</span>
-          </p>
+          <p class="c-name">예쁜 일자어깨 승모근 스트레칭 BEST3 <span class="badge">🪑 앉아서</span></p>
+          <p class="c-meta">땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">6분</span></p>
           <p class="c-note">
             거북목 · 굽은등 · 라운드숄더 교정 &nbsp;/&nbsp;
             넥 풀 → 푸시 백풀 → 넥 숄더 릴리프, 각 30초씩 2세트
@@ -212,14 +260,27 @@
         <a class="go" href="https://www.youtube.com/watch?v=dJXZRZvqbYg" target="_blank" rel="noopener">▶ 바로 열기</a>
       </div>
 
-      <div class="empty">
-        이 부위에 운동을 더 넣으려면 이름 · 유튜브 링크 · 소요시간을 대화창에 주세요.
-      </div>
     </div>
+
+    <div class="group">
+      <span class="group-name">얼굴</span>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="c-name">얼굴살 & 얼굴붓기 빠지는 스트레칭 3가지 <span class="badge">🪑 앉아서</span></p>
+          <p class="c-meta">땅끄부부 &nbsp;·&nbsp; 소요시간 <span class="time">5분</span></p>
+          <p class="c-note">
+            풀 앤 스마일 → 칙 벌룬 → 푸시 친업
+          </p>
+        </div>
+        <a class="go" href="https://www.youtube.com/watch?v=WqS7fSi9rR4" target="_blank" rel="noopener">▶ 바로 열기</a>
+      </div>
+
+    </div>
+
   </section>
 
   <hr class="rule">
-
   <!-- ── 요일 배치 ── -->
   <section>
     <div class="sec-head">
@@ -255,7 +316,7 @@
     <a class="fbtn" href="https://claude.ai/chat/59d41c10-7439-4acf-b8a0-7ba3f716d378" target="_blank" rel="noopener">💬 대화창에서 전체 받기</a>
   </div>
 
-  <p class="foot">workout.html · v5 · 2026.07.30</p>
+  <p class="foot">workout.html · v9 · 2026.07.30</p>
 </div>
 
 <script>
